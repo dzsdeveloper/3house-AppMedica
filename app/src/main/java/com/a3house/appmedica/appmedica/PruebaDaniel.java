@@ -5,4 +5,5 @@ package com.a3house.appmedica.appmedica;
  */
 
 public class PruebaDaniel {
+int f = 0;
 }
