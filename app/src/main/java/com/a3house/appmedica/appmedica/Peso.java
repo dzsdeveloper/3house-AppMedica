@@ -73,7 +73,7 @@ public class Peso {
      * @return
      */
     public double getImc() {
-        // TODO implement here
+        // TODO implement here pendiente
         return 0.0d;
     }
 
