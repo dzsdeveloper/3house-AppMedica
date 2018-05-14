@@ -1,3 +1,4 @@
+package com.a3house.appmedica.appmedica;
 
 import java.util.*;
 
@@ -15,7 +16,7 @@ public class Visita {
     /**
      * 
      */
-    private date fecha;
+    private Date fecha;
 
     /**
      * 
