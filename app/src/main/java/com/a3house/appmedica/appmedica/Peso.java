@@ -1,3 +1,4 @@
+package com.a3house.appmedica.appmedica;
 
 import java.util.*;
 
@@ -15,7 +16,7 @@ public class Peso {
     /**
      * 
      */
-    private date fecha;
+    private Date fecha;
 
     /**
      * 
@@ -32,11 +33,16 @@ public class Peso {
      */
     private String notas;
 
+    /**
+     * 
+     */
+    private double valor;
+
 
     /**
      * @return
      */
-    public date getFecha() {
+    public Date getFecha() {
         // TODO implement here
         return null;
     }
@@ -44,7 +50,7 @@ public class Peso {
     /**
      * @param value
      */
-    public void setFecha(date value) {
+    public void setFecha(Date value) {
         // TODO implement here
     }
 
@@ -90,6 +96,21 @@ public class Peso {
      * @param value
      */
     public void setNotas(String value) {
+        // TODO implement here
+    }
+
+    /**
+     * @return
+     */
+    public String getValor() {
+        // TODO implement here
+        return "";
+    }
+
+    /**
+     * @param value
+     */
+    public void setValor(double value) {
         // TODO implement here
     }
 
