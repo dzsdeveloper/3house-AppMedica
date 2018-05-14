@@ -42,7 +42,7 @@ public class Visita {
     /**
      * @return
      */
-    public date getFecha() {
+    public Date getFecha() {
         // TODO implement here
         return null;
     }
@@ -50,7 +50,7 @@ public class Visita {
     /**
      * @param value
      */
-    public void setFecha(date value) {
+    public void setFecha(Date value) {
         // TODO implement here
     }
 
