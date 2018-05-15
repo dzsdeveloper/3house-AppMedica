@@ -10,18 +10,17 @@ public class Visita {
     /**
      * Default constructor
      */
-    public Visita() {
+    public Visita(Calendar fecha, String lugar, String doctor, String notas) {
+        this.fecha = fecha;
+        this.lugar = lugar;
+        this.doctor = doctor;
+        this.notas = notas;
     }
 
     /**
      * 
      */
-    private Date fecha;
-
-    /**
-     * 
-     */
-    private DateTime hora;
+    private Calendar fecha;
 
     /**
      * 
@@ -42,31 +41,17 @@ public class Visita {
     /**
      * @return
      */
-    public Date getFecha() {
+    public Calendar getFecha() {
         // TODO implement here
-        return null;
+        return fecha;
     }
 
     /**
-     * @param value
+     * @param fecha
      */
-    public void setFecha(Date value) {
+    public void setFecha(Calendar fecha) {
         // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public DateTime getHora() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param value
-     */
-    public void setHora(DateTime value) {
-        // TODO implement here
+        this.fecha = fecha;
     }
 
     /**
@@ -74,14 +59,15 @@ public class Visita {
      */
     public String getLugar() {
         // TODO implement here
-        return "";
+        return lugar;
     }
 
     /**
-     * @param value
+     * @param lugar
      */
-    public void setLugar(String value) {
+    public void setLugar(String lugar) {
         // TODO implement here
+        this.lugar = lugar;
     }
 
     /**
@@ -89,14 +75,15 @@ public class Visita {
      */
     public String getDoctor() {
         // TODO implement here
-        return "";
+        return doctor;
     }
 
     /**
-     * @param value
+     * @param doctor
      */
-    public void setDoctor(String value) {
+    public void setDoctor(String doctor) {
         // TODO implement here
+        this.doctor = doctor;
     }
 
     /**
@@ -104,14 +91,15 @@ public class Visita {
      */
     public String getNotas() {
         // TODO implement here
-        return "";
+        return notas;
     }
 
     /**
-     * @param value
+     * @param notas
      */
-    public void setNotas(String value) {
+    public void setNotas(String notas) {
         // TODO implement here
+        this.notas = notas;
     }
 
 }
