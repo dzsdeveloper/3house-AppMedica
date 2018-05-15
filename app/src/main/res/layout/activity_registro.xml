@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteY="40dp">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imageLogo"
             android:layout_width="match_parent"
             android:layout_height="147dp"
             app:srcCompat="@drawable/cardiograma" />
