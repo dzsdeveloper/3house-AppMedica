@@ -7,11 +7,8 @@ import java.util.*;
  */
 public class Peso {
 
-    /**
-     * Default constructor
-     */
-    public Peso() {
-    }
+
+
 
     /**
      * 
@@ -38,6 +35,18 @@ public class Peso {
      */
     public double valor;
 
+    /**
+     * Default constructor
+     */
+    public Peso(Date fecha, int variacion, double imc, String notas, double valor ) {
+
+        this.fecha = fecha;
+        this.variacion = variacion;
+        this.imc = imc;
+        this.notas = notas;
+        this.valor = valor;
+
+    }
 
     /**
      * @return
