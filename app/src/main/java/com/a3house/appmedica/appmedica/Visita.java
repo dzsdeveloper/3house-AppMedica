@@ -8,16 +8,6 @@ import java.util.*;
 public class Visita {
 
     /**
-     * Default constructor
-     */
-    public Visita(Calendar fecha, String lugar, String doctor, String notas) {
-        this.fecha = fecha;
-        this.lugar = lugar;
-        this.doctor = doctor;
-        this.notas = notas;
-    }
-
-    /**
      * 
      */
     private Calendar fecha;
@@ -37,6 +27,15 @@ public class Visita {
      */
     private String notas;
 
+    /**
+     * Default constructor
+     */
+    public Visita(Calendar fecha, String lugar, String doctor, String notas) {
+        this.fecha = fecha;
+        this.lugar = lugar;
+        this.doctor = doctor;
+        this.notas = notas;
+    }
 
     /**
      * @return
