@@ -7,28 +7,26 @@ import java.util.*;
  */
 public class Usuario {
 
-    /**
-     * Default constructor
-     */
-    public Usuario() {
-    }
-
-    /**
-     * 
-     */
     private String nombre;
 
     /**
-     * 
+     *
      */
     private String apellidos;
 
     /**
-     * 
+     *
      */
     private double altura;
 
-
+    /**
+     * Default constructor
+     */
+    public Usuario(String nombre, String apellidos, double altura){
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.altura = altura;
+    }
 
 
     /**
@@ -36,7 +34,7 @@ public class Usuario {
      */
     public String getNombre() {
         // TODO implement here
-        return "";
+        return nombre;
     }
 
     /**
@@ -51,7 +49,7 @@ public class Usuario {
      */
     public String getApellidos() {
         // TODO implement here
-        return "";
+        return apellidos;
     }
 
     /**
@@ -66,7 +64,7 @@ public class Usuario {
      */
     public double getAltura() {
         // TODO implement here
-        return 0.0d;
+        return altura;
     }
 
     /**
