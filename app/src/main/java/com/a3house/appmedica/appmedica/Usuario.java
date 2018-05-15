@@ -7,26 +7,30 @@ import java.util.*;
  */
 public class Usuario {
 
-    /**
-     * Default constructor
-     */
-    public Usuario() {
-    }
-
-    /**
-     * 
-     */
     private String nombre;
 
     /**
-     * 
+     *
      */
     private String apellidos;
 
     /**
-     * 
+     *
      */
     private double altura;
+
+    /**
+     * Default constructor
+     */
+    public Usuario(String nombre, String apellidos, double altura){
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.altura = altura;
+    }
+    /**
+     * 
+     */
+
 
 
 
