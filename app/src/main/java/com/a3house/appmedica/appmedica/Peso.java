@@ -20,27 +20,27 @@ public class Peso {
     /**
      * 
      */
-    private Date fecha;
+    public Date fecha;
 
     /**
      * 
      */
-    private int variacion;
+    public int variacion;
 
     /**
      * 
      */
-    private double imc;
+    public double imc;
 
     /**
      * 
      */
-    private String notas;
+    public String notas;
 
     /**
      * 
      */
-    private double valor;
+    public double valor;
 
 
     /**
@@ -48,7 +48,7 @@ public class Peso {
      */
     public Date getFecha() {
         // TODO implement here
-        return null;
+        return fecha;
     }
 
     /**
@@ -63,7 +63,7 @@ public class Peso {
      */
     public int getVariacion() {
         // TODO implement here
-        return 0;
+        return variacion;
     }
 
     /**
@@ -78,7 +78,7 @@ public class Peso {
      */
     public double getImc() {
         // TODO implement here pendiente
-        return 0.0d;
+        return imc;
     }
 
     /**
@@ -93,7 +93,7 @@ public class Peso {
      */
     public String getNotas() {
         // TODO implement here
-        return "";
+        return notas;
     }
 
     /**
@@ -106,9 +106,9 @@ public class Peso {
     /**
      * @return
      */
-    public String getValor() {
+    public double getValor() {
         // TODO implement here
-        return "";
+        return valor;
     }
 
     /**
