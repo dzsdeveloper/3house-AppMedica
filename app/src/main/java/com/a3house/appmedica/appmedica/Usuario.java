@@ -27,12 +27,6 @@ public class Usuario {
         this.apellidos = apellidos;
         this.altura = altura;
     }
-    /**
-     * 
-     */
-
-
-
 
 
     /**
@@ -40,7 +34,7 @@ public class Usuario {
      */
     public String getNombre() {
         // TODO implement here
-        return "";
+        return nombre;
     }
 
     /**
@@ -55,7 +49,7 @@ public class Usuario {
      */
     public String getApellidos() {
         // TODO implement here
-        return "";
+        return apellidos;
     }
 
     /**
@@ -70,7 +64,7 @@ public class Usuario {
      */
     public double getAltura() {
         // TODO implement here
-        return 0.0d;
+        return altura;
     }
 
     /**
