@@ -3,6 +3,7 @@ package com.a3house.appmedica.appmedica;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class ActivityDashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,6 +25,14 @@ public class ActivityDashboard extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Mensaje de bienvenida
+        // Falta anteponer un Bienvenido/a
+        // dependiendo de si el usuario es hombre o mujer + Usuario.nombre
+        Toast bienvenida = Toast.makeText(getApplicationContext(), "Cada día estás más cerca de tu objetivo", Toast.LENGTH_LONG);
+        bienvenida.setGravity(Gravity.CENTER, 0,0);
+        bienvenida.show();
+
+        //Botón redondo que se muestra si el usuario ya ha introducido el peso hoy
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
