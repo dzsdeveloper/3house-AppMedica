@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /* Envia al nuevo usuario al registro */
         Intent intent = new Intent(this, ActivityRegistro.class);
         this.startActivity(intent);
     }
