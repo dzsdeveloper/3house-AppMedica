@@ -1,9 +1,6 @@
 package com.a3house.appmedica.appmedica;
 
-import android.support.v7.widget.RecyclerView;
-
 import java.util.*;
-import com.a3house.appmedica.appmedica.GestionFirebase.class;
 
 /**
  * 
@@ -18,7 +15,7 @@ public class GestionVisita {
     }
 
     /**
-     * Crea objeto visita y lo envía a través del método enviarDatosVisita de la clase GestionFirebase
+     * Crea un objeto Visita y lo envía al método enviarDatosUsuario del objeto GestionFirebase
      */
     public void crearVisita(Calendar fecha, String lugar, String doctor, String notas) {
         // TODO Falta añadir en GestionFirebase.enviarDatosVisita la variable que recibirá (visita)
