@@ -49,8 +49,8 @@ public class GestionFirebase {
         Date date1 =  calendar.getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
         String date2 = sdf.format(date1);
-        //Calendar calendar2 = new GregorianCalendar(2013,0,31);
-        Visita vst = new Visita(date2,"Barcelona","Doctor1","Nota1");
+        Calendar calendar2 = new GregorianCalendar(2013,0,31);
+        Visita vst = new Visita(calendar2,"Barcelona","Doctor1","Nota1");
         System.out.println(vst.getFecha()+vst.getLugar()+vst.getDoctor()+vst.getNotas());
         Visita vst2 = new Visita(vst.getFecha(),vst.getLugar(),vst.getDoctor(),vst.getNotas());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
