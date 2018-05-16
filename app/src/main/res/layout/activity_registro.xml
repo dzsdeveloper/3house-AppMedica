@@ -25,8 +25,8 @@
             android:layout_height="wrap_content"
             android:capitalize="words"
             android:ems="10"
-            android:inputType="textCapWords|textPersonName"
-            android:text="Nombre" />
+            android:hint="Nombre"
+            android:inputType="textCapWords|textPersonName" />
 
         <EditText
             android:id="@+id/edtApellidos"
@@ -34,8 +34,8 @@
             android:layout_height="wrap_content"
             android:capitalize="words"
             android:ems="10"
-            android:inputType="textCapWords"
-            android:text="Apellidos" />
+            android:hint="Apellidos"
+            android:inputType="textCapWords" />
 
         <LinearLayout
             android:layout_width="match_parent"

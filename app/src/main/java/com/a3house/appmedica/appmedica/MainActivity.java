@@ -11,8 +11,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /* Envia al nuevo usuario al registro */
-        Intent intent = new Intent(this, ActivityRegistro.class);
-        this.startActivity(intent);
+        /* Envia al nuevo usuario al registro
+        Intent lanzadorRegistro = new Intent(this, ActivityRegistro.class);
+        this.startActivity(lanzadorRegistro); */
+
+        /*Envia al usuario ya registrado al Dashboard/Panel Principal de la app */
+        Intent lanzadorDashboard = new Intent(this, ActivityDashboard.class);
+        this.startActivity(lanzadorDashboard);
     }
 }
