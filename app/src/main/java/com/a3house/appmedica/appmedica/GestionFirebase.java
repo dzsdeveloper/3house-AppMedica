@@ -50,7 +50,7 @@ public class GestionFirebase {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
         String date2 = sdf.format(date1);
        // Calendar calendar2 = new GregorianCalendar(2013,0,31);
-        Visita2 vst = new Visita2(date2,"Barcelonsa","Doctor1","Nota1");
+        Visita2 vst = new Visita2(date2,"Barcelona","Doctor1","Nota1");
         System.out.println(vst.getFecha()+vst.getLugar()+vst.getDoctor()+vst.getNotas());
         Visita2 vst2 = new Visita2(vst.getFecha(),vst.getLugar(),vst.getDoctor(),vst.getNotas());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
