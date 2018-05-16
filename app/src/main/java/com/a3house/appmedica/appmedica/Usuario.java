@@ -17,15 +17,20 @@ public class Usuario {
     /**
      *
      */
-    private double altura;
+    private int altura;
 
+    /**
+     *
+     */
+    private char sexo;
     /**
      * Default constructor
      */
-    public Usuario(String nombre, String apellidos, double altura){
+    public Usuario(String nombre, String apellidos, int altura, char sexo){
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.altura = altura;
+        this.sexo = sexo;
     }
 
 
@@ -62,7 +67,7 @@ public class Usuario {
     /**
      * @return
      */
-    public double getAltura() {
+    public int getAltura() {
         // TODO implement here
         return altura;
     }
@@ -70,7 +75,19 @@ public class Usuario {
     /**
      * @param value
      */
-    public void setAltura(double value) {
+    public void setAltura(int value) {
+        // TODO implement here
+    }
+
+    public char getSexo() {
+        // TODO implement here
+        return sexo;
+    }
+
+    /**
+     * @param value
+     */
+    public void setSexo(char value) {
         // TODO implement here
     }
 
