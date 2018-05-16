@@ -24,7 +24,7 @@ public class GestionFirebase {
     final public static String DEMO_REFERENCE = "usuario_prueba";
     final public static String USUARIO_REFERENCE = "perfil";
     final public static String VISITA2_REFERENCE = "visitas";
-    final public static String PESO_REFERENCE = "peso";
+    final public static String PESO2_REFERENCE = "pesos";
     /**
      * Default constructor
      */
@@ -37,7 +37,7 @@ public class GestionFirebase {
     public void enviarDatosUsuario() {
         // TODO implement here
         Usuario usr = new Usuario("Gabriel","Tello",1.70);
-        System.out.println(usr.getAltura()+usr.getNombre()+usr.getApellidos());
+        System.out.println("*********************************************************"+usr.getAltura()+usr.getNombre()+usr.getApellidos());
         Usuario usr2 = new Usuario(usr.getNombre(),usr.getApellidos(),usr.getAltura());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
@@ -57,14 +57,17 @@ public class GestionFirebase {
         DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
         myRef.child(VISITA2_REFERENCE).push().setValue(vst2);
     }
+
     public void enviarDatosPeso() {
         // TODO implement here
-       /* Peso pes = new Peso("Gabriel","Tello",1.70);
-        System.out.println(usr.getAltura()+usr.getNombre()+usr.getApellidos());
-        Peso pes2 = new Peso(usr.getNombre(),usr.getApellidos(),usr.getAltura());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        String date2 = sdf.format(new Date());
+        Peso2 pes = new Peso2(date2,2,2.5,"notas",3.5);
+        System.out.println(pes.getFecha()+pes.getVariacion()+pes.getImc()+pes.getNotas()+pes.getValor());
+        Peso2 pes2 = new Peso2(pes.getFecha(),pes.getVariacion(),pes.getImc(),pes.getNotas(),pes.getValor());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
-        myRef.child(PESO_REFERENCE).push().setValue(pes2);*/
+        myRef.child(PESO2_REFERENCE).push().setValue(pes2);
     }
     /**
      *
@@ -188,6 +191,75 @@ class Visita2 {
     public void setNotas(String notas) {
         // TODO implement here
         this.notas = notas;
+    }
+
+}
+class Peso2 {
+
+
+    public String fecha;
+
+    public int variacion;
+
+    public double imc;
+
+    public String notas;
+
+    public double valor;
+
+    public Peso2(String fecha, int variacion, double imc, String notas, double valor ) {
+
+        this.fecha = fecha;
+        this.variacion = variacion;
+        this.imc = imc;
+        this.notas = notas;
+        this.valor = valor;
+
+    }
+
+    public String getFecha() {
+        // TODO implement here
+        return fecha;
+    }
+
+    public void setFecha(String value) {
+        // TODO implement here
+    }
+
+    public int getVariacion() {
+        // TODO implement here
+        return variacion;
+    }
+
+    public void setVariacion(int value) {
+        // TODO implement here
+    }
+
+    public double getImc() {
+        // TODO implement here pendiente
+        return imc;
+    }
+
+    public void setImc(double value) {
+        // TODO implement here
+    }
+
+    public String getNotas() {
+        // TODO implement here
+        return notas;
+    }
+
+    public void setNotas(String value) {
+        // TODO implement here
+    }
+
+    public double getValor() {
+        // TODO implement here
+        return valor;
+    }
+
+    public void setValor(double value) {
+        // TODO implement here
     }
 
 }
