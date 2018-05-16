@@ -13,12 +13,12 @@ public class Peso {
     /**
      * 
      */
-    public Date fecha;
+    public Calendar fecha;
 
     /**
      * 
      */
-    public int variacion;
+    public double variacion;
 
     /**
      * 
@@ -36,9 +36,14 @@ public class Peso {
     public double valor;
 
     /**
+     *
+     */
+    public char sexo;
+
+    /**
      * Default constructor
      */
-    public Peso(Date fecha, int variacion, double imc, String notas, double valor ) {
+    public Peso( Calendar fecha, double variacion, double imc, String notas, double valor ) {
 
         this.fecha = fecha;
         this.variacion = variacion;
@@ -46,12 +51,13 @@ public class Peso {
         this.notas = notas;
         this.valor = valor;
 
+
     }
 
     /**
      * @return
      */
-    public Date getFecha() {
+    public Calendar getFecha() {
         // TODO implement here
         return fecha;
     }
@@ -59,14 +65,14 @@ public class Peso {
     /**
      * @param value
      */
-    public void setFecha(Date value) {
+    public void setFecha(Calendar value) {
         // TODO implement here
     }
 
     /**
      * @return
      */
-    public int getVariacion() {
+    public double getVariacion() {
         // TODO implement here
         return variacion;
     }
@@ -74,7 +80,7 @@ public class Peso {
     /**
      * @param value
      */
-    public void setVariacion(int value) {
+    public void setVariacion(double value) {
         // TODO implement here
     }
 
@@ -122,5 +128,7 @@ public class Peso {
     public void setValor(double value) {
         // TODO implement here
     }
+
+
 
 }
