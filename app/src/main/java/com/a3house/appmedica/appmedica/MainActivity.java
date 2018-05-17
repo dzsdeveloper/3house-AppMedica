@@ -13,9 +13,9 @@ public class MainActivity extends AppCompatActivity {
 
         /* Envia al nuevo usuario al registro
         Intent lanzadorRegistro = new Intent(this, ActivityRegistro.class);
-        this.startActivity(lanzadorRegistro); */
+        this.startActivity(lanzadorRegistro);
 
-        /*Envia al usuario ya registrado al Dashboard/Panel Principal de la app */
+        Le Envia al usuario ya registrado al Dashboard/Panel Principal de la app */
         Intent lanzadorDashboard = new Intent(this, ActivityDashboard.class);
         this.startActivity(lanzadorDashboard);
     }
