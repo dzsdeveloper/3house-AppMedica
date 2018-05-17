@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "492104113020",
+    "firebase_url": "https://app-medica-fc27a.firebaseio.com",
+    "project_id": "app-medica-fc27a",
+    "storage_bucket": "app-medica-fc27a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492104113020:android:9dae7f27b9eaaf77",
+        "android_client_info": {
+          "package_name": "com.a3house.appmedica.appmedica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "492104113020-l4s0db9ah1pe2129etv0givmjdvqtpil.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.a3house.appmedica.appmedica",
+            "certificate_hash": "935d9dcbde23d93aa76ed7b86a5b4e523209a8bf"
+          }
+        },
+        {
+          "client_id": "492104113020-a70mpkfanm2rd4guliq8dlpfmqoso7gf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOinspKM2HytElUQ9gRcQXqn_vcq-VMEA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "492104113020-a70mpkfanm2rd4guliq8dlpfmqoso7gf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

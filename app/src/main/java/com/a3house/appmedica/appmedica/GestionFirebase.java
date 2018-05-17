@@ -92,6 +92,17 @@ public class GestionFirebase {
         DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
         myRef.child(PESO2_REFERENCE).push().setValue(pes2);
     }
+    public void enviarDatosPeso(Peso p) {
+        // TODO implement here
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        String date2 = sdf.format(new Date());
+        Peso2 pes = new Peso2(date2,2,2.5,"notas",3.5);
+        //System.out.println(pes.getFecha()+pes.getVariacion()+pes.getImc()+pes.getNotas()+pes.getValor());
+        Peso2 pes2 = new Peso2(pes.getFecha(),pes.getVariacion(),pes.getImc(),pes.getNotas(),pes.getValor());
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
+        myRef.child(PESO2_REFERENCE).push().setValue(pes2);
+    }
     /**
      *
      */
@@ -101,121 +112,10 @@ public class GestionFirebase {
         final List<String> lstIds = new ArrayList<>();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = db.getReference(DEMO_REFERENCE);
-        /*
-        ValueEventListener valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
-                    Usuario user = snapshot.getValue(Usuario.class);
-                    //System.out.println(user.getNombre()+myRef.child("perfil").push().getKey()+user.toString());
 
-                    lstUser.add(user);
-                }
-                int i=0;
-                for (Usuario u:lstUser){
-                    System.out.println("*****" +u.getAltura()+"******"+ i++);
-                }
-                //Usuario post = dataSnapshot.getValue(Usuario.class);
-                //System.out.println("++++++++++"+post.toString()+myRef.child("perfil").push().getKey());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("loadPost:onCancelled" + databaseError.toException());
-            }
-        };
-        myRef.addValueEventListener(valueEventListener);
-        */
-        /*
-        ChildEventListener childEventListener = new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Usuario user = dataSnapshot.getValue(Usuario.class);
-                lstUser.add(user);
-                lstIds.add(dataSnapshot.getKey());
-                //notifyItemInserted(lstUser.size()-1);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-        */
-       /* db.getReference().getRoot().addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
-                    Usuario user = snapshot.getValue(Usuario.class);
-                    System.out.println(user.getNombre()+myRef.child("perfil").push().getKey());
-                    List<Usuario> lstUser  = new ArrayList<>();
-                    lstUser.add(user);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
     }
 }
-class Adapter extends RecyclerView.Adapter<Adapter.AdapViewHolder> {
-    List<Usuario> lstUser = new ArrayList<>();
-    List<String> lstIds = new ArrayList<>();
 
-    public Adapter(List<Usuario> lstUser) {
-        this.lstUser = lstUser;
-    }
-
-    @Override
-    public AdapViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_recycler,parent,false);
-        AdapViewHolder holder = new AdapViewHolder(v);
-        return holder;
-    }
-
-    @Override
-    public void onBindViewHolder(AdapViewHolder holder, int position) {
-        Usuario usr = lstUser.get(position);
-        holder.tvnombre.setText(usr.getNombre());
-        holder.tvaltura.setText("alto" +usr.getAltura());
-    }
-
-    @Override
-    public int getItemCount() {
-        return lstUser.size();
-    }
-
-    class AdapViewHolder extends RecyclerView.ViewHolder {
-
-        TextView tvnombre,tvaltura;
-
-        public AdapViewHolder(View itemView) {
-            super(itemView);
-            tvnombre = (TextView) itemView.findViewById(R.id.tvTexto);
-            tvaltura = (TextView) itemView.findViewById(R.id.tvAlto);
-        }
-    }
-
-
-
-}
 class Visita2 {
 
     private String fecha;
