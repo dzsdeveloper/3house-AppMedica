@@ -37,9 +37,9 @@ public class GestionFirebase {
      */
     public void enviarDatosUsuario() {
         // TODO implement here
-        Usuario usr = new Usuario("Gabriel","Tello",170,'M');
+        Usuario2 usr = new Usuario2("Gabriel","Tello",170,"M");
         System.out.println("*********************************************************"+usr.getAltura()+usr.getNombre()+usr.getApellidos());
-        Usuario usr2 = new Usuario(usr.getNombre(),usr.getApellidos(),usr.getAltura(),usr.getSexo());
+        Usuario2 usr2 = new Usuario2(usr.getNombre(),usr.getApellidos(),usr.getAltura(),usr.getSexo());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
         myRef.child(USUARIO_REFERENCE).push().setValue(usr2);
@@ -252,6 +252,98 @@ class Peso2 {
     }
 
     public void setValor(double value) {
+        // TODO implement here
+    }
+
+}
+class Usuario2 {
+
+    private String nombre;
+
+    /**
+     *
+     */
+    private String apellidos;
+
+    /**
+     *
+     */
+    private int altura;
+
+    /**
+     *
+     */
+    private String sexo;
+
+    public Usuario2() {
+    }
+
+    /**
+     * Default constructor
+     */
+
+    public Usuario2(String nombre, String apellidos, int altura, String sexo){
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.altura = altura;
+        this.sexo = sexo;
+    }
+
+
+    /**
+     * @return
+     */
+    public String getNombre() {
+        // TODO implement here
+        return nombre;
+    }
+
+    /**
+     * @param value
+     */
+    public void setNombre(String value) {
+        // TODO implement here
+    }
+
+    /**
+     * @return
+     */
+    public String getApellidos() {
+        // TODO implement here
+        return apellidos;
+    }
+
+    /**
+     * @param value
+     */
+    public void setApellidos(String value) {
+        // TODO implement here
+    }
+
+    /**
+     * @return
+     */
+    public int getAltura() {
+        // TODO implement here
+        return altura;
+    }
+
+    /**
+     * @param value
+     */
+    public void setAltura(int value) {
+        // TODO implement here
+    }
+
+    public String getSexo() {
+        // TODO implement here
+        return sexo;
+    }
+
+    /**
+     * @param value
+     */
+    public void setSexo(String value) {
         // TODO implement here
     }
 

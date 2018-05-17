@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Adapter extends RecyclerView.Adapter<com.a3house.appmedica.appmedica.Adapter.AdapViewHolder> {
-        List<Usuario> lstUser = new ArrayList<>();
+        List<Usuario2> lstUser = new ArrayList<>();
         List<String> lstIds = new ArrayList<>();
 
-        public Adapter(List<Usuario> lstUser) {
+        public Adapter(List<Usuario2> lstUser) {
             this.lstUser = lstUser;
         }
 
@@ -25,7 +25,7 @@ class Adapter extends RecyclerView.Adapter<com.a3house.appmedica.appmedica.Adapt
 
         @Override
         public void onBindViewHolder(AdapViewHolder holder, int position) {
-            Usuario usr = lstUser.get(position);
+            Usuario2 usr = lstUser.get(position);
             holder.tvnombre.setText(usr.getNombre());
             holder.tvaltura.setText("alto" +usr.getAltura());
         }
@@ -41,7 +41,7 @@ class Adapter extends RecyclerView.Adapter<com.a3house.appmedica.appmedica.Adapt
 
             public AdapViewHolder(View itemView) {
                 super(itemView);
-                tvnombre = (TextView) itemView.findViewById(R.id.tvTexto);
+                tvnombre = (TextView) itemView.findViewById(R.id.tvNombre);
                 tvaltura = (TextView) itemView.findViewById(R.id.tvAlto);
             }
         }

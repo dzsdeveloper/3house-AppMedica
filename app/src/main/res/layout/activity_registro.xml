@@ -85,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/darker_gray"
+                android:onClick="mostrar"
                 android:text="ENVIAR" />
 
         </RadioGroup>
