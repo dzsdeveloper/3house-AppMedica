@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,9 +37,18 @@ public class GestionFirebase {
      */
     public void enviarDatosUsuario() {
         // TODO implement here
-        Usuario usr = new Usuario("Gabriel","Tello",1.70);
+        Usuario usr = new Usuario("Gabriel","Tello",170,'M');
         System.out.println("*********************************************************"+usr.getAltura()+usr.getNombre()+usr.getApellidos());
-        Usuario usr2 = new Usuario(usr.getNombre(),usr.getApellidos(),usr.getAltura());
+        Usuario usr2 = new Usuario(usr.getNombre(),usr.getApellidos(),usr.getAltura(),usr.getSexo());
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
+        myRef.child(USUARIO_REFERENCE).push().setValue(usr2);
+    }
+    public void enviarDatosUsuario(Usuario u) {
+        // TODO implement here
+        Usuario usr = new Usuario("Gabriel","Tello",170,'M');
+        System.out.println("*********************************************************"+usr.getAltura()+usr.getNombre()+usr.getApellidos());
+        Usuario usr2 = new Usuario(usr.getNombre(),usr.getApellidos(),usr.getAltura(),usr.getSexo());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
         myRef.child(USUARIO_REFERENCE).push().setValue(usr2);
@@ -51,19 +61,32 @@ public class GestionFirebase {
         String date2 = sdf.format(date1);
        // Calendar calendar2 = new GregorianCalendar(2013,0,31);
         Visita2 vst = new Visita2(date2,"Barcelona","Doctor1","Nota1");
-        System.out.println(vst.getFecha()+vst.getLugar()+vst.getDoctor()+vst.getNotas());
+       // System.out.println(vst.getFecha()+vst.getLugar()+vst.getDoctor()+vst.getNotas());
         Visita2 vst2 = new Visita2(vst.getFecha(),vst.getLugar(),vst.getDoctor(),vst.getNotas());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
         myRef.child(VISITA2_REFERENCE).push().setValue(vst2);
     }
-
+    public void enviarDatosVisita(Visita v) {
+        // TODO implement here
+        Calendar calendar = Calendar.getInstance();
+        Date date1 =  calendar.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        String date2 = sdf.format(date1);
+        // Calendar calendar2 = new GregorianCalendar(2013,0,31);
+        Visita2 vst = new Visita2(date2,"Barcelona","Doctor1","Nota1");
+        // System.out.println(vst.getFecha()+vst.getLugar()+vst.getDoctor()+vst.getNotas());
+        Visita2 vst2 = new Visita2(vst.getFecha(),vst.getLugar(),vst.getDoctor(),vst.getNotas());
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
+        myRef.child(VISITA2_REFERENCE).push().setValue(vst2);
+    }
     public void enviarDatosPeso() {
         // TODO implement here
         SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
         String date2 = sdf.format(new Date());
         Peso2 pes = new Peso2(date2,2,2.5,"notas",3.5);
-        System.out.println(pes.getFecha()+pes.getVariacion()+pes.getImc()+pes.getNotas()+pes.getValor());
+        //System.out.println(pes.getFecha()+pes.getVariacion()+pes.getImc()+pes.getNotas()+pes.getValor());
         Peso2 pes2 = new Peso2(pes.getFecha(),pes.getVariacion(),pes.getImc(),pes.getNotas(),pes.getValor());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
@@ -74,13 +97,72 @@ public class GestionFirebase {
      */
     public void recibirDatos() {
         // TODO implement here
-/*
+        final List<Usuario> lstUser  = new ArrayList<>();
+        final List<String> lstIds = new ArrayList<>();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        db.getReference().getRoot().addValueEventListener(new ValueEventListener() {
+        final DatabaseReference myRef = db.getReference(DEMO_REFERENCE);
+        /*
+        ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot:dataSnapshot.getChildren()){
                     Usuario user = snapshot.getValue(Usuario.class);
+                    //System.out.println(user.getNombre()+myRef.child("perfil").push().getKey()+user.toString());
+
+                    lstUser.add(user);
+                }
+                int i=0;
+                for (Usuario u:lstUser){
+                    System.out.println("*****" +u.getAltura()+"******"+ i++);
+                }
+                //Usuario post = dataSnapshot.getValue(Usuario.class);
+                //System.out.println("++++++++++"+post.toString()+myRef.child("perfil").push().getKey());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("loadPost:onCancelled" + databaseError.toException());
+            }
+        };
+        myRef.addValueEventListener(valueEventListener);
+        */
+        /*
+        ChildEventListener childEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Usuario user = dataSnapshot.getValue(Usuario.class);
+                lstUser.add(user);
+                lstIds.add(dataSnapshot.getKey());
+                //notifyItemInserted(lstUser.size()-1);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        */
+       /* db.getReference().getRoot().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    Usuario user = snapshot.getValue(Usuario.class);
+                    System.out.println(user.getNombre()+myRef.child("perfil").push().getKey());
                     List<Usuario> lstUser  = new ArrayList<>();
                     lstUser.add(user);
                 }
@@ -93,41 +175,47 @@ public class GestionFirebase {
         });*/
     }
 }
-/*
-    class Adapter extends  RecyclerView.Adapter<Adapter.ViewHolder> {
-        List<Usuario> lstUser;
+class Adapter extends RecyclerView.Adapter<Adapter.AdapViewHolder> {
+    List<Usuario> lstUser = new ArrayList<>();
+    List<String> lstIds = new ArrayList<>();
 
-        public Adapter(List<Usuario> lstUser) {
-            this.lstUser = lstUser;
-        }
+    public Adapter(List<Usuario> lstUser) {
+        this.lstUser = lstUser;
+    }
 
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_recycler,parent,false);
-            ViewHolder vh = new ViewHolder(v);
-            return vh;
-        }
+    @Override
+    public AdapViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_recycler,parent,false);
+        AdapViewHolder holder = new AdapViewHolder(v);
+        return holder;
+    }
 
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            Usuario usr = lstUser.get(position);
-            holder.txt.setText(usr.getNombre());
-        }
+    @Override
+    public void onBindViewHolder(AdapViewHolder holder, int position) {
+        Usuario usr = lstUser.get(position);
+        holder.tvnombre.setText(usr.getNombre());
+        holder.tvaltura.setText("alto" +usr.getAltura());
+    }
 
-        @Override
-        public int getItemCount() {
-            return lstUser.size();
-        }
+    @Override
+    public int getItemCount() {
+        return lstUser.size();
+    }
 
-        static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txt;
-        public ViewHolder(View item) {
-            super(item);
-            txt = item.findViewById(R.id.tvTexto);
+    class AdapViewHolder extends RecyclerView.ViewHolder {
+
+        TextView tvnombre,tvaltura;
+
+        public AdapViewHolder(View itemView) {
+            super(itemView);
+            tvnombre = (TextView) itemView.findViewById(R.id.tvTexto);
+            tvaltura = (TextView) itemView.findViewById(R.id.tvAlto);
         }
     }
-    }
-*/
+
+
+
+}
 class Visita2 {
 
     private String fecha;
@@ -138,6 +226,8 @@ class Visita2 {
 
     private String notas;
 
+    public Visita2() {
+    }
 
     public Visita2(String fecha, String lugar, String doctor, String notas) {
         this.fecha = fecha;
@@ -206,6 +296,9 @@ class Peso2 {
     public String notas;
 
     public double valor;
+
+    public Peso2() {
+    }
 
     public Peso2(String fecha, int variacion, double imc, String notas, double valor ) {
 
