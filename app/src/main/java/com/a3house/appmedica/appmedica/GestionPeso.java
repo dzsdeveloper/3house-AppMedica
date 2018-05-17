@@ -1,5 +1,12 @@
 package com.a3house.appmedica.appmedica;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.TextView;
+
 import java.util.*;
 
 
@@ -20,10 +27,32 @@ public class GestionPeso {
     /**
      * 
      */
-    public void introducirPeso() {
-        // TODO Hablar de este tema con el equipo para ver que vamos a hacer
+
+
+    public void introducirPesoshowDialog(Activity activity, String msg){
+        final Dialog dialog = new Dialog(activity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.cuadro_dialogo_plantilla2);
+
+       /* TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
+        text.setText(msg);*/
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.bt_guardar);
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
 
     }
+//}*/
+
+
+
 
     /**
      * val= peso

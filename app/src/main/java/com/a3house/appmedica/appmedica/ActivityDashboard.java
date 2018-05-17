@@ -1,5 +1,6 @@
 package com.a3house.appmedica.appmedica;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -40,8 +41,10 @@ public class ActivityDashboard extends AppCompatActivity
         botonBascula.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Ya has introducido tu peso hoy", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                /*Snackbar.make(view, "Ya has introducido tu peso hoy", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+                GestionPeso gp = new GestionPeso();
+                gp.introducirPesoshowDialog(ActivityDashboard.this ,"introduce tu peso");
             }
         });
 

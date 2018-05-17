@@ -82,7 +82,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/bt_guardar"
         android:layout_width="169dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="116dp"
