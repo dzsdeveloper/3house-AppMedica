@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class ActivityDashboard extends AppCompatActivity
@@ -26,15 +27,16 @@ public class ActivityDashboard extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         //Mensaje de bienvenida
-        // Falta anteponer un Bienvenido/a
-        // dependiendo de si el usuario es hombre o mujer + Usuario.nombre
-        Toast bienvenida = Toast.makeText(getApplicationContext(), "Cada día estás más cerca de tu objetivo", Toast.LENGTH_LONG);
+        // + Usuario.nombre
+        Toast bienvenida = Toast.makeText(getApplicationContext(), "¡Hola! Cada día estás más cerca de tu objetivo", Toast.LENGTH_LONG);
         bienvenida.setGravity(Gravity.CENTER, 0,0);
         bienvenida.show();
 
-        //Botón redondo que se muestra si el usuario ya ha introducido el peso hoy
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        //Botón con icono bascula
+        //para introducir el peso
+        // si el usuario ya ha introducido el peso sale un mensaje
+        ImageButton botonBascula = (ImageButton) findViewById(R.id.btnBascula);
+        botonBascula.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Ya has introducido tu peso hoy", Snackbar.LENGTH_LONG)
