@@ -1,5 +1,6 @@
 package com.a3house.appmedica.appmedica;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -94,6 +95,9 @@ public class ActivityDashboard extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            //boton del menu para volver al Dashboard
+            Intent lanzadorDashboard = new Intent(this, ActivityDashboard.class);
+            this.startActivity(lanzadorDashboard);
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
