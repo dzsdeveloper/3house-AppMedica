@@ -2,9 +2,12 @@ package com.a3house.appmedica.appmedica;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.support.design.widget.TextInputLayout;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import java.util.*;
@@ -16,7 +19,7 @@ import com.a3house.appmedica.appmedica.Usuario.*;
 /**
  * 
  */
-public class GestionPeso {
+public class GestionPeso implements View.OnClickListener {
 
     /**
      * Default constructor
@@ -30,6 +33,9 @@ public class GestionPeso {
 
 
     public void introducirPesoshowDialog(Activity activity, String msg){
+
+        NumberPicker numberpickerKilos,numberPickerGramos;
+
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
@@ -38,14 +44,53 @@ public class GestionPeso {
 
        /* TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
         text.setText(msg);*/
+        numberpickerKilos = (NumberPicker)dialog.findViewById(R.id.numberPickerKilos);
+        numberPickerGramos = (NumberPicker)dialog.findViewById(R.id.numberPickerGramos);
 
+        numberpickerKilos.setMinValue(0);
+
+        numberpickerKilos.setMaxValue(250);
+        numberpickerKilos.setValue(50);
+
+
+        numberPickerGramos.setMinValue(0);
+
+        numberPickerGramos.setMaxValue(9);
+
+        EditText etPlannedDate = (EditText) dialog.findViewById(R.id.etPlannedDateHOY);
+        etPlannedDate.setOnClickListener(this);
+
+
+
+
+
+        //Boton que realiza la accion de guardar
         Button dialogButton = (Button) dialog.findViewById(R.id.bt_guardar);
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
             }
+
+
+
         });
+
+
+
+
+        //Accion de DatePicker HOY
+        EditText etFechaHoy = (EditText) dialog.findViewById(R.id.etPlannedDateHOY);
+        etFechaHoy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MostrarDatePicker();
+               // dialog.dismiss();
+            }
+
+        });
+
+
 
         dialog.show();
 
@@ -148,4 +193,8 @@ public class GestionPeso {
 
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }
