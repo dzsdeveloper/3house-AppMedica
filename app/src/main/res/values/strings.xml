@@ -35,4 +35,10 @@
     <string name="tvFechaVisita">TextView</string>
     <string name="tvLugar">TextView</string>
     <string name="tvNotasVisita">TextView</string>
+
+    <!--Strings Nueva visita -->
+    <string name="doctor1">Dr. Mercader</string>
+    <string name="doctor2">Dra. Lorenz</string>
+    <string name="doctor3">Dr. Williams</string>
+
 </resources>

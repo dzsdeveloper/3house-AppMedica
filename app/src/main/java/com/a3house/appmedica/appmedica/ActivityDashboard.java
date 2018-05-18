@@ -48,6 +48,7 @@ public class ActivityDashboard extends AppCompatActivity
             }
         });
 
+        //Muestra el menú lateral
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -108,7 +109,8 @@ public class ActivityDashboard extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
-
+            Intent lanzadorNuevaVisita = new Intent(this, ActivityNuevaVisita.class);
+            this.startActivity(lanzadorNuevaVisita);
         } else if (id == R.id.nav_send) {
 
         }
