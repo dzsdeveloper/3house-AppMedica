@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,27 +28,7 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
     AdapterPeso adpP = new AdapterPeso(lstPeso);
     AdapterVisita adpV = new AdapterVisita(lstVisita);
     GestionFirebase gf = new GestionFirebase();
-    public Peso2 recibirPeso(){
-        Peso2 p;
-        gf.crearReferencia().child("pesos").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                lstPeso.removeAll(lstPeso);
-                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
-                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
-                    Peso2 p = new Peso2((String) hm.get("fecha"),Integer.parseInt(String.valueOf(hm.get("variacion"))),Double.parseDouble(String.valueOf(hm.get("imc"))),(String) hm.get("notas"),Double.parseDouble(String.valueOf(hm.get("valor"))) );
-                    lstPeso.add(p);
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
 
-            }
-
-    });
-        p = lstPeso.get(lstPeso.size()-1);
-        return p;
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +68,7 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
                     lstPeso.add(p);
                 }
                 //Peso2 p2 = lstPeso.get(lstPeso.size()-1);
-                Peso2 p2 = recibirPeso();
+                Peso2 p2 = gf.recibirPeso(lstPeso);
                 adpP.notifyDataSetChanged();
             }
 
@@ -117,9 +98,13 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
     }
     public void ver(View v){
         //gf.recibirDatos();
-        gf.enviarDatosUsuario();
-        gf.enviarDatosVisita();
-        gf.enviarDatosPeso();
+        Usuario usr = new Usuario("Gabriel","Tello",170,'M');
+        Calendar calendar = Calendar.getInstance();
+        Visita vst = new Visita(calendar,"Barcelona","Doctor1","Nota1");
+        Peso pso = new Peso(calendar,2,2.5,"notas",3.5);
+        gf.enviarDatosUsuario(usr);
+        gf.enviarDatosVisita(vst);
+        gf.enviarDatosPeso(pso);
     }
 
 }

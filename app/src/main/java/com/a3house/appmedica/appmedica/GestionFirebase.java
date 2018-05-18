@@ -21,17 +21,18 @@ import java.util.*;
  *
  */
 public class GestionFirebase {
-    //final public static String DEMO_REFERENCE = "clase_padre";
-    final public static String DEMO_REFERENCE = "usuario_prueba";
+    final public static String DEMO_REFERENCE = "usuario_prueba"; //raiz del Firebase
     final public static String USUARIO_REFERENCE = "perfil";
     final public static String VISITA2_REFERENCE = "visitas";
     final public static String PESO2_REFERENCE = "pesos";
+    List<Usuario2> lstUser = new ArrayList<>();
+    List<Peso2> lstPesoH = new ArrayList<>();
+    List<Visita2> lstVisita = new ArrayList<>();
     /**
      * Default constructor
      */
     public GestionFirebase() {
     }
-
     /**
      *
      */
@@ -40,71 +41,70 @@ public class GestionFirebase {
         DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
         return myRef;
     }
-    public void enviarDatosUsuario() {
-        // TODO implement here
-        Usuario2 usr = new Usuario2("Gabriel","Tello",170,"M");
-        Usuario2 usr2 = new Usuario2(usr.getNombre(),usr.getApellidos(),usr.getAltura(),usr.getSexo());
-        crearReferencia().child(USUARIO_REFERENCE).push().setValue(usr2);
-    }
     public void enviarDatosUsuario(Usuario u) {
         // TODO implement here
-        Usuario usr = new Usuario("Gabriel","Tello",170,'M');
-        Usuario usr2 = new Usuario(usr.getNombre(),usr.getApellidos(),usr.getAltura(),usr.getSexo());
-        crearReferencia().child(USUARIO_REFERENCE).push().setValue(usr2);
-    }
-    public void enviarDatosVisita() {
-        // TODO implement here
-        Calendar calendar = Calendar.getInstance();
-        Date date1 =  calendar.getTime();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
-        String date2 = sdf.format(date1);
-       // Calendar calendar2 = new GregorianCalendar(2013,0,31);
-        Visita2 vst = new Visita2(date2,"Barcelona","Doctor1","Nota1");
-        Visita2 vst2 = new Visita2(vst.getFecha(),vst.getLugar(),vst.getDoctor(),vst.getNotas());
-        crearReferencia().child(VISITA2_REFERENCE).push().setValue(vst2);
+        crearReferencia().child(USUARIO_REFERENCE).push().setValue(new Usuario2(u));
     }
     public void enviarDatosVisita(Visita v) {
         // TODO implement here
-        Calendar calendar = Calendar.getInstance();
-        Date date1 =  calendar.getTime();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
-        String date2 = sdf.format(date1);
-        // Calendar calendar2 = new GregorianCalendar(2013,0,31);
-        Visita2 vst = new Visita2(date2,"Barcelona","Doctor1","Nota1");
-        Visita2 vst2 = new Visita2(vst.getFecha(),vst.getLugar(),vst.getDoctor(),vst.getNotas());
-        crearReferencia().child(VISITA2_REFERENCE).push().setValue(vst2);
-    }
-    public void enviarDatosPeso() {
-        // TODO implement here
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
-        String date2 = sdf.format(new Date());
-        Peso2 pes = new Peso2(date2,2,2.5,"notas",3.5);
-        Peso2 pes2 = new Peso2(pes.getFecha(),pes.getVariacion(),pes.getImc(),pes.getNotas(),pes.getValor());
-        crearReferencia().child(PESO2_REFERENCE).push().setValue(pes2);
+        crearReferencia().child(VISITA2_REFERENCE).push().setValue(new Visita2(v));
     }
     public void enviarDatosPeso(Peso p) {
         // TODO implement here
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
-        String date2 = sdf.format(new Date());
-        Peso2 pes = new Peso2(date2,2,2.5,"notas",3.5);
-        Peso2 pes2 = new Peso2(pes.getFecha(),pes.getVariacion(),pes.getImc(),pes.getNotas(),pes.getValor());
-        crearReferencia().child(PESO2_REFERENCE).push().setValue(pes2);
+        crearReferencia().child(PESO2_REFERENCE).push().setValue(new Peso2(p));
     }
     /**
      *
      */
     public void recibirDatos() {
         // TODO implement here
-        final List<Usuario> lstUser  = new ArrayList<>();
+        final List<Usuario> lstUser = new ArrayList<>();
         final List<String> lstIds = new ArrayList<>();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = db.getReference(DEMO_REFERENCE);
-
+    }
+    public Peso2 recibirPeso(final List<Peso2> lstPeso){
+        Peso2 p;
+        crearReferencia().child("pesos").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstPeso.removeAll(lstPeso);
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    Peso2 p = new Peso2((String) hm.get("fecha"),Integer.parseInt(String.valueOf(hm.get("variacion"))),Double.parseDouble(String.valueOf(hm.get("imc"))),(String) hm.get("notas"),Double.parseDouble(String.valueOf(hm.get("valor"))) );
+                    lstPeso.add(p);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+        p = lstPeso.get(lstPeso.size()-1);
+        return p;
+    }
+    public List<Peso2> recibirPesoHistorico(final List<Peso2> lstPeso){
+        Peso2 p;
+        crearReferencia().child("pesos").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstPeso.removeAll(lstPeso);
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    Peso2 p = new Peso2((String) hm.get("fecha"),Integer.parseInt(String.valueOf(hm.get("variacion"))),Double.parseDouble(String.valueOf(hm.get("imc"))),(String) hm.get("notas"),Double.parseDouble(String.valueOf(hm.get("valor"))) );
+                    lstPeso.add(p);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+        //p = lstPeso.get(lstPeso.size()-1);
+        return lstPeso;
     }
 }
 
 class Visita2 {
-
+    //variables
     private String fecha;
 
     private String lugar;
@@ -112,7 +112,7 @@ class Visita2 {
     private String doctor;
 
     private String notas;
-
+    //constructores
     public Visita2() {
     }
 
@@ -122,8 +122,14 @@ class Visita2 {
         this.doctor = doctor;
         this.notas = notas;
     }
-
-
+public Visita2(Visita v){
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+    this.fecha = sdf.format(v.getFecha().getTime());
+    this.lugar = v.getLugar();
+    this.doctor = v.getDoctor();
+    this.notas = v.getNotas();
+}
+    //getters y setters
     public String getFecha() {
         // TODO implement here
         return fecha;
@@ -172,31 +178,35 @@ class Visita2 {
 
 }
 class Peso2 {
-
-
+    //variables
     public String fecha;
 
-    public int variacion;
+    public double variacion;
 
     public double imc;
 
     public String notas;
 
     public double valor;
-
+    //constructores
     public Peso2() {
     }
 
-    public Peso2(String fecha, int variacion, double imc, String notas, double valor ) {
-
+    public Peso2(String fecha, double variacion, double imc, String notas, double valor ) {
         this.fecha = fecha;
         this.variacion = variacion;
         this.imc = imc;
         this.notas = notas;
         this.valor = valor;
-
     }
-
+    public Peso2(Peso p){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        this.fecha = sdf.format(p.getFecha().getTime());
+        this.variacion = p.getVariacion();
+        this.imc = p.getImc();
+        this.notas = p.getNotas();
+        this.valor = p.getValor();
+    }
     public String getFecha() {
         // TODO implement here
         return fecha;
@@ -206,12 +216,12 @@ class Peso2 {
         // TODO implement here
     }
 
-    public int getVariacion() {
+    public double getVariacion() {
         // TODO implement here
         return variacion;
     }
 
-    public void setVariacion(int value) {
+    public void setVariacion(double value) {
         // TODO implement here
     }
 
@@ -244,39 +254,27 @@ class Peso2 {
 
 }
 class Usuario2 {
-
+    //variables
     private String nombre;
-
-    /**
-     *
-     */
     private String apellidos;
-
-    /**
-     *
-     */
     private int altura;
-
-    /**
-     *
-     */
     private String sexo;
-
+    //constructores
     public Usuario2() {
     }
-
-    /**
-     * Default constructor
-     */
-
-    public Usuario2(String nombre, String apellidos, int altura, String sexo){
+    public Usuario2(String nombre, String apellidos, int altura, String sexo) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.altura = altura;
         this.sexo = sexo;
     }
-
-
+    public Usuario2(Usuario u){
+        this.nombre = u.getNombre();
+        this.apellidos = u.getApellidos();
+        this.altura = u.getAltura();
+        this.sexo = Character.toString(u.getSexo());
+    }
+    //getters y setters
     /**
      * @return
      */
@@ -284,14 +282,12 @@ class Usuario2 {
         // TODO implement here
         return nombre;
     }
-
     /**
      * @param value
      */
     public void setNombre(String value) {
         // TODO implement here
     }
-
     /**
      * @return
      */
@@ -299,14 +295,12 @@ class Usuario2 {
         // TODO implement here
         return apellidos;
     }
-
     /**
      * @param value
      */
     public void setApellidos(String value) {
         // TODO implement here
     }
-
     /**
      * @return
      */
@@ -321,17 +315,14 @@ class Usuario2 {
     public void setAltura(int value) {
         // TODO implement here
     }
-
     public String getSexo() {
         // TODO implement here
         return sexo;
     }
-
     /**
      * @param value
      */
     public void setSexo(String value) {
         // TODO implement here
     }
-
 }
