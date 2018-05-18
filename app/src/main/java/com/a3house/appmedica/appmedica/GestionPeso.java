@@ -2,18 +2,13 @@ package com.a3house.appmedica.appmedica;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.support.design.widget.TextInputLayout;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
-import android.widget.TextView;
-
-import java.util.*;
-
-
-import com.a3house.appmedica.appmedica.Usuario.*;
 
 
 /**
@@ -32,7 +27,7 @@ public class GestionPeso implements View.OnClickListener {
      */
 
 
-    public void introducirPesoshowDialog(Activity activity, String msg){
+    public void introducirPesoshowDialog(final Activity activity, String msg){
 
         NumberPicker numberpickerKilos,numberPickerGramos;
 
@@ -57,11 +52,20 @@ public class GestionPeso implements View.OnClickListener {
 
         numberPickerGramos.setMaxValue(9);
 
-        EditText etPlannedDate = (EditText) dialog.findViewById(R.id.etPlannedDateHOY);
-        etPlannedDate.setOnClickListener(this);
 
 
 
+
+
+        //Accion de DatePicker HOY
+        EditText etFechaHoy = (EditText) dialog.findViewById(R.id.etPlannedDateHOY);
+
+        etFechaHoy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog(activity);
+            }
+        });
 
 
         //Boton que realiza la accion de guardar
@@ -69,33 +73,23 @@ public class GestionPeso implements View.OnClickListener {
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
+                //TODO GUARDAR LA INFO EN LA BASE DE DATOS;
             }
-
-
-
         });
-
-
-
-
-        //Accion de DatePicker HOY
-        EditText etFechaHoy = (EditText) dialog.findViewById(R.id.etPlannedDateHOY);
-        etFechaHoy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new MostrarDatePicker();
-               // dialog.dismiss();
-            }
-
-        });
-
 
 
         dialog.show();
 
+
     }
-//}*/
+
+    private void showDatePickerDialog(Activity activity) {
+        DatePickerFragment newFragment = new DatePickerFragment();
+        newFragment.show(activity.getFragmentManager(),"MI ETIQUETA");
+
+        //MainActivity.this.getActivityContext()
+    }
+
 
 
 
@@ -197,4 +191,25 @@ public class GestionPeso implements View.OnClickListener {
     public void onClick(View v) {
 
     }
+
+  /*  @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case
+                R.id.etPlannedDateHOY:
+                showDatePickerDialog();
+                break;
+            case
+                R.id.etPlannedDateELEGIR:
+                showDatePickerDialog();
+                break;
+            case
+                R.id.bt_guardar:
+                //TODO GUARDAR LOS DATOS EN FIREBASE
+                break;
+        }
+    }*/
+
+
+
 }
