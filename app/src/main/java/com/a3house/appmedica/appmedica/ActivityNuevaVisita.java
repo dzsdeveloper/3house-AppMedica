@@ -1,11 +1,10 @@
 package com.a3house.appmedica.appmedica;
 
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class ActivityNuevaVisita extends AppCompatActivity {
 
@@ -13,8 +12,38 @@ public class ActivityNuevaVisita extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nueva_visita);
-        //Soporta la toolbar para mostrar el menu
-        //Toolbar toolbarNuevaVisita = (Toolbar) findViewById(R.id.toolbarNuevaVisita);
-        //setSupportActionBar(toolbarNuevaVisita);
+        ///Accion de DatePicker HOY
+        EditText edtFecha = findViewById(R.id.edtFecha);
+
+        edtFecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+
+
+        //Boton que realiza la accion de guardar
+       /* Button dialogButton = (Button) findViewById(R.id.btnGuardarVisita);
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO GUARDAR LA INFO EN LA BASE DE DATOS;
+            }
+        });*/
+    }
+
+   /* @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.edtFecha:
+                showDatePickerDialog();
+                break;
+        }
+    }*/
+
+    private void showDatePickerDialog() {
+        DatePickerFragment newFragment = new DatePickerFragment();
+        newFragment.show(getFragmentManager(),"MI ETIQUETA");
     }
 }
