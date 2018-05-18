@@ -12,8 +12,4 @@ public class ActivityRegistro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
     }
-    public void mostrar(View v){
-        Intent i = new Intent(this,TestActivity_RecyclerView.class);
-        this.startActivity(i);
-    }
 }
