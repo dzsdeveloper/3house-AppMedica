@@ -35,6 +35,7 @@ public class GestionPeso {
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.cuadro_dialogo_plantilla2);
 
+
        /* TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
         text.setText(msg);*/
 
