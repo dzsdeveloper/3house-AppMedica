@@ -35,23 +35,22 @@ public class GestionFirebase {
     /**
      *
      */
+    public DatabaseReference crearReferencia(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
+        return myRef;
+    }
     public void enviarDatosUsuario() {
         // TODO implement here
         Usuario2 usr = new Usuario2("Gabriel","Tello",170,"M");
-        System.out.println("*********************************************************"+usr.getAltura()+usr.getNombre()+usr.getApellidos());
         Usuario2 usr2 = new Usuario2(usr.getNombre(),usr.getApellidos(),usr.getAltura(),usr.getSexo());
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
-        myRef.child(USUARIO_REFERENCE).push().setValue(usr2);
+        crearReferencia().child(USUARIO_REFERENCE).push().setValue(usr2);
     }
     public void enviarDatosUsuario(Usuario u) {
         // TODO implement here
         Usuario usr = new Usuario("Gabriel","Tello",170,'M');
-        System.out.println("*********************************************************"+usr.getAltura()+usr.getNombre()+usr.getApellidos());
         Usuario usr2 = new Usuario(usr.getNombre(),usr.getApellidos(),usr.getAltura(),usr.getSexo());
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
-        myRef.child(USUARIO_REFERENCE).push().setValue(usr2);
+        crearReferencia().child(USUARIO_REFERENCE).push().setValue(usr2);
     }
     public void enviarDatosVisita() {
         // TODO implement here
@@ -61,11 +60,8 @@ public class GestionFirebase {
         String date2 = sdf.format(date1);
        // Calendar calendar2 = new GregorianCalendar(2013,0,31);
         Visita2 vst = new Visita2(date2,"Barcelona","Doctor1","Nota1");
-       // System.out.println(vst.getFecha()+vst.getLugar()+vst.getDoctor()+vst.getNotas());
         Visita2 vst2 = new Visita2(vst.getFecha(),vst.getLugar(),vst.getDoctor(),vst.getNotas());
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
-        myRef.child(VISITA2_REFERENCE).push().setValue(vst2);
+        crearReferencia().child(VISITA2_REFERENCE).push().setValue(vst2);
     }
     public void enviarDatosVisita(Visita v) {
         // TODO implement here
@@ -75,33 +71,24 @@ public class GestionFirebase {
         String date2 = sdf.format(date1);
         // Calendar calendar2 = new GregorianCalendar(2013,0,31);
         Visita2 vst = new Visita2(date2,"Barcelona","Doctor1","Nota1");
-        // System.out.println(vst.getFecha()+vst.getLugar()+vst.getDoctor()+vst.getNotas());
         Visita2 vst2 = new Visita2(vst.getFecha(),vst.getLugar(),vst.getDoctor(),vst.getNotas());
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
-        myRef.child(VISITA2_REFERENCE).push().setValue(vst2);
+        crearReferencia().child(VISITA2_REFERENCE).push().setValue(vst2);
     }
     public void enviarDatosPeso() {
         // TODO implement here
         SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
         String date2 = sdf.format(new Date());
         Peso2 pes = new Peso2(date2,2,2.5,"notas",3.5);
-        //System.out.println(pes.getFecha()+pes.getVariacion()+pes.getImc()+pes.getNotas()+pes.getValor());
         Peso2 pes2 = new Peso2(pes.getFecha(),pes.getVariacion(),pes.getImc(),pes.getNotas(),pes.getValor());
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
-        myRef.child(PESO2_REFERENCE).push().setValue(pes2);
+        crearReferencia().child(PESO2_REFERENCE).push().setValue(pes2);
     }
     public void enviarDatosPeso(Peso p) {
         // TODO implement here
         SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
         String date2 = sdf.format(new Date());
         Peso2 pes = new Peso2(date2,2,2.5,"notas",3.5);
-        //System.out.println(pes.getFecha()+pes.getVariacion()+pes.getImc()+pes.getNotas()+pes.getValor());
         Peso2 pes2 = new Peso2(pes.getFecha(),pes.getVariacion(),pes.getImc(),pes.getNotas(),pes.getValor());
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(DEMO_REFERENCE);
-        myRef.child(PESO2_REFERENCE).push().setValue(pes2);
+        crearReferencia().child(PESO2_REFERENCE).push().setValue(pes2);
     }
     /**
      *

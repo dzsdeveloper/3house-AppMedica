@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,13 +40,14 @@ public class AdapterPeso extends RecyclerView.Adapter<AdapterPeso.AdapViewHolder
 
     class AdapViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvfechapeso,tvimc,tvnotapeso,tvvalor,tvvariacion;
-
+        TextView tvfechapeso,tvimc,tvvalor,tvvariacion,tvnotapeso;
+        //EditText tvnotapeso;
         public AdapViewHolder(View itemView) {
             super(itemView);
                 tvfechapeso = (TextView) itemView.findViewById(R.id.tvFecha);
                 tvimc = (TextView) itemView.findViewById(R.id.tvImc);
                 tvnotapeso = (TextView) itemView.findViewById(R.id.tvNotas);
+                //tvnotapeso = (EditText) itemView.findViewById(R.id.tvNotas);
                 tvvalor = (TextView) itemView.findViewById(R.id.tvValor);
                 tvvariacion = (TextView) itemView.findViewById(R.id.tvVariacion);
         }
