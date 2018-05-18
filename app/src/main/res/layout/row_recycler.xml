@@ -57,28 +57,34 @@
                 android:text="Peso" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/tvFecha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/tvFecha" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tvImc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/tvImc" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/tvNotas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/tvNotas" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/tvValor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/tvValor" />
+
+            <TextView
+                android:id="@+id/tvVariacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tvVariacion" />
         </LinearLayout>
 
         <LinearLayout
@@ -91,6 +97,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Visitas" />
+
+            <TextView
+                android:id="@+id/tvDoctor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tvDoctor" />
+
+            <TextView
+                android:id="@+id/tvFechaVisita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tvFechaVisita" />
+
+            <TextView
+                android:id="@+id/tvLugar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tvLugar" />
+
+            <TextView
+                android:id="@+id/tvNotasVisita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tvNotasVisita" />
         </LinearLayout>
 
     </LinearLayout>

@@ -8,14 +8,20 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-class Adapter extends RecyclerView.Adapter<com.a3house.appmedica.appmedica.Adapter.AdapViewHolder> {
+class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.AdapViewHolder> {
         List<Usuario2> lstUser = new ArrayList<>();
+        List<Peso2> lstPeso = new ArrayList<>();
+        List<Visita2> lstVst = new ArrayList<>();
         List<String> lstIds = new ArrayList<>();
 
-        public Adapter(List<Usuario2> lstUser) {
+        /*public Adapter(List<Usuario2> lstUser,List<Peso2> lstPeso,List<Visita2> lstVst) {
             this.lstUser = lstUser;
-        }
-
+            this.lstPeso = lstPeso;
+            this.lstVst = lstVst;
+        }*/
+    public AdapterUsuario(List<Usuario2> lstUser) {
+        this.lstUser = lstUser;
+    }
         @Override
         public AdapViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_recycler,parent,false);
@@ -27,7 +33,9 @@ class Adapter extends RecyclerView.Adapter<com.a3house.appmedica.appmedica.Adapt
         public void onBindViewHolder(AdapViewHolder holder, int position) {
             Usuario2 usr = lstUser.get(position);
             holder.tvnombre.setText(usr.getNombre());
-            holder.tvaltura.setText("alto" +usr.getAltura());
+            holder.tvaltura.setText(String.valueOf(usr.getAltura()));
+            holder.tvapellido.setText(usr.getApellidos());
+            holder.tvsexo.setText(usr.getSexo());
         }
 
         @Override
@@ -37,12 +45,14 @@ class Adapter extends RecyclerView.Adapter<com.a3house.appmedica.appmedica.Adapt
 
         class AdapViewHolder extends RecyclerView.ViewHolder {
 
-            TextView tvnombre,tvaltura;
+            TextView tvnombre,tvaltura,tvapellido,tvsexo;
 
             public AdapViewHolder(View itemView) {
                 super(itemView);
                 tvnombre = (TextView) itemView.findViewById(R.id.tvNombre);
                 tvaltura = (TextView) itemView.findViewById(R.id.tvAlto);
+                tvapellido = (TextView) itemView.findViewById(R.id.tvApellido);
+                tvsexo = (TextView) itemView.findViewById(R.id.tvSexo);
             }
         }
     }

@@ -19,38 +19,94 @@ import java.util.HashMap;
 import java.util.List;
 
 public class TestActivity_RecyclerView extends AppCompatActivity {
-    Button btncoche;
     RecyclerView rv;
-    List<Usuario2> lstUser;
-    Adapter adp;
+    List<Usuario2> lstUser = new ArrayList<>();
+    List<Peso2> lstPeso = new ArrayList<>();
+    List<Visita2> lstVisita = new ArrayList<>();
+    AdapterUsuario adpU = new AdapterUsuario(lstUser);
+    AdapterPeso adpP = new AdapterPeso(lstPeso);
+    AdapterVisita adpV = new AdapterVisita(lstVisita);
+    GestionFirebase gf = new GestionFirebase();
+    public Peso2 recibirPeso(){
+        Peso2 p;
+        gf.crearReferencia().child("pesos").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstPeso.removeAll(lstPeso);
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    Peso2 p = new Peso2((String) hm.get("fecha"),Integer.parseInt(String.valueOf(hm.get("variacion"))),Double.parseDouble(String.valueOf(hm.get("imc"))),(String) hm.get("notas"),Double.parseDouble(String.valueOf(hm.get("valor"))) );
+                    lstPeso.add(p);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+    });
+        p = lstPeso.get(lstPeso.size()-1);
+        return p;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test__recycler_view);
-        btncoche = (Button) findViewById(R.id.btnEnviar);
+        Button btncoche = (Button) findViewById(R.id.btnEnviar);
         rv = (RecyclerView) findViewById(R.id.recycler);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        lstUser = new ArrayList<>();
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        adp = new Adapter(lstUser);
-        rv.setAdapter(adp);
-        DatabaseReference myRef = db.getReference(GestionFirebase.DEMO_REFERENCE);
-
-        myRef.child("perfil").addValueEventListener(new ValueEventListener() {
+        rv.setAdapter(adpU);
+        gf.crearReferencia().child("perfil").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 lstUser.removeAll(lstUser);
                 for (DataSnapshot snapshot:dataSnapshot.getChildren()){
                     HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
-                    //Double d = Double.parseDouble(String.valueOf(hm.get("altura")));
-                    int d = Integer.parseInt(String.valueOf(hm.get("altura")));
                     Usuario2 user = new Usuario2((String) hm.get("nombre"),
                             (String) hm.get("apellidos"),
-                            d,(String) hm.get("sexo"));
-                    //Usuario2 user = snapshot.getValue(Usuario2.class);
+                            Integer.parseInt(String.valueOf(hm.get("altura"))),(String) hm.get("sexo"));
+
                     lstUser.add(user);
                 }
-                adp.notifyDataSetChanged();
+                adpU.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        rv.setAdapter(adpP);
+        gf.crearReferencia().child("pesos").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstPeso.removeAll(lstPeso);
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    Peso2 p = new Peso2((String) hm.get("fecha"),Integer.parseInt(String.valueOf(hm.get("variacion"))),Double.parseDouble(String.valueOf(hm.get("imc"))),(String) hm.get("notas"),Double.parseDouble(String.valueOf(hm.get("valor"))) );
+                    lstPeso.add(p);
+                }
+                //Peso2 p2 = lstPeso.get(lstPeso.size()-1);
+                Peso2 p2 = recibirPeso();
+                adpP.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        //rv.setAdapter(adpV);
+        gf.crearReferencia().child("visitas").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstVisita.removeAll(lstVisita);
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    Visita2 v = new Visita2((String) hm.get("fecha"),(String) hm.get("lugar"),(String) hm.get("doctor"),(String) hm.get("notas"));
+                    lstVisita.add(v);
+                }
+                adpV.notifyDataSetChanged();
             }
 
             @Override
@@ -60,7 +116,6 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
         });
     }
     public void ver(View v){
-        GestionFirebase gf = new GestionFirebase();
         //gf.recibirDatos();
         gf.enviarDatosUsuario();
         gf.enviarDatosVisita();
