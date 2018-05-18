@@ -22,7 +22,11 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
     Button btncoche;
     RecyclerView rv;
     List<Usuario2> lstUser;
-    Adapter adp;
+    List<Peso2> lstPeso;
+    List<Visita2> lstVisita;
+    AdapterUsuario adpU;
+    AdapterPeso adpP;
+    AdapterVisita adpV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +34,14 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
         btncoche = (Button) findViewById(R.id.btnEnviar);
         rv = (RecyclerView) findViewById(R.id.recycler);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        lstUser = new ArrayList<>();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        adp = new Adapter(lstUser);
-        rv.setAdapter(adp);
+        lstUser = new ArrayList<>();
+        adpU = new AdapterUsuario(lstUser);
+        lstPeso = new ArrayList<>();
+        adpP = new AdapterPeso(lstPeso);
+        lstVisita = new ArrayList<>();
+        adpV = new AdapterVisita(lstVisita);
+        rv.setAdapter(adpU);
         DatabaseReference myRef = db.getReference(GestionFirebase.DEMO_REFERENCE);
 
         myRef.child("perfil").addValueEventListener(new ValueEventListener() {
@@ -42,15 +50,49 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
                 lstUser.removeAll(lstUser);
                 for (DataSnapshot snapshot:dataSnapshot.getChildren()){
                     HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
-                    //Double d = Double.parseDouble(String.valueOf(hm.get("altura")));
-                    int d = Integer.parseInt(String.valueOf(hm.get("altura")));
                     Usuario2 user = new Usuario2((String) hm.get("nombre"),
                             (String) hm.get("apellidos"),
-                            d,(String) hm.get("sexo"));
-                    //Usuario2 user = snapshot.getValue(Usuario2.class);
+                            Integer.parseInt(String.valueOf(hm.get("altura"))),(String) hm.get("sexo"));
+
                     lstUser.add(user);
                 }
-                adp.notifyDataSetChanged();
+                adpU.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        rv.setAdapter(adpP);
+        myRef.child("pesos").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstPeso.removeAll(lstPeso);
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    Peso2 p = new Peso2((String) hm.get("fecha"),Integer.parseInt(String.valueOf(hm.get("variacion"))),Double.parseDouble(String.valueOf(hm.get("imc"))),(String) hm.get("notas"),Double.parseDouble(String.valueOf(hm.get("valor"))) );
+                    lstPeso.add(p);
+                }
+                adpP.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        //rv.setAdapter(adpV);
+        myRef.child("visitas").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstVisita.removeAll(lstVisita);
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    Visita2 v = new Visita2((String) hm.get("fecha"),(String) hm.get("lugar"),(String) hm.get("doctor"),(String) hm.get("notas"));
+                    lstVisita.add(v);
+                }
+                adpV.notifyDataSetChanged();
             }
 
             @Override

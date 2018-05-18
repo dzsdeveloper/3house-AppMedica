@@ -26,4 +26,13 @@
     <string name="btnEnviar">Button</string>
     <string name="tvApellido">TextView</string>
     <string name="tvSexo">TextView</string>
+    <string name="tvFecha">TextView</string>
+    <string name="tvImc">TextView</string>
+    <string name="tvNotas">TextView</string>
+    <string name="tvValor">TextView</string>
+    <string name="tvVariacion">TextView</string>
+    <string name="tvDoctor">TextView</string>
+    <string name="tvFechaVisita">TextView</string>
+    <string name="tvLugar">TextView</string>
+    <string name="tvNotasVisita">TextView</string>
 </resources>
