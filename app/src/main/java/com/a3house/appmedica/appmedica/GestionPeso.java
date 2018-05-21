@@ -1,12 +1,14 @@
 package com.a3house.appmedica.appmedica;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 
@@ -58,12 +60,24 @@ public class GestionPeso implements View.OnClickListener {
 
 
         //Accion de DatePicker HOY
-        EditText etFechaHoy = (EditText) dialog.findViewById(R.id.etPlannedDateHOY);
+        final EditText etFechaHoy = (EditText) dialog.findViewById(R.id.etPlannedDateHOY);
 
         etFechaHoy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDatePickerDialog(activity);
+                showDatePickerDialog(activity,etFechaHoy);
+
+            }
+        });
+
+        //Accion de DatePicker HOY
+        final EditText etFechaElegir = (EditText) dialog.findViewById(R.id.etPlannedDateELEGIR);
+
+        etFechaElegir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog(activity,etFechaElegir);
+
             }
         });
 
@@ -83,11 +97,26 @@ public class GestionPeso implements View.OnClickListener {
 
     }
 
-    private void showDatePickerDialog(Activity activity) {
+  /*  private void showDatePickerDialog(Activity activity) {
         DatePickerFragment newFragment = new DatePickerFragment();
-        newFragment.show(activity.getFragmentManager(),"MI ETIQUETA");
+        newFragment.show(activity.getFragmentManager(),"datePicker");
 
         //MainActivity.this.getActivityContext()
+    }*/
+
+    private void showDatePickerDialog(Activity activity, final EditText etFecha ) {
+
+        
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because january is zero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                etFecha.setText(selectedDate);
+            }
+        });
+        newFragment.show(activity.getFragmentManager(),"datePicker");
+        //(activity.getSupportFragmentManager(), "datePicker");
     }
 
 
