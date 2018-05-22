@@ -15,10 +15,13 @@
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="30dp"
             android:baselineAligned="false"
-            android:paddingLeft="117dp"
             android:text="Nueva Visita"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edtFecha"
@@ -60,6 +63,8 @@
             android:id="@+id/tvSelectorMedico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:text="Seleccione médico"
             android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
@@ -73,6 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:checked="false"
                 android:text="@string/doctor1" />
 
             <RadioButton
@@ -93,6 +99,7 @@
                 android:id="@+id/btnGuardarVisita"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="50dp"
                 android:layout_weight="1"
                 android:text="GUARDAR VISITA" />
         </RadioGroup>

@@ -20,13 +20,13 @@ public class GestionVisita {
     /**
      * Crea un objeto Visita y lo envía al método enviarDatosUsuario del objeto GestionFirebase
      */
-    public void crearVisita() {
-        // TODO Falta añadir en GestionFirebase.enviarDatosVisita la variable que recibirá (visita)
-        /*LocalDateTime fecha = new LocalDateTime();
-        fecha.
-        Visita visita = new Visita(fecha, lugar, doctor, notas);
+    public static void crearVisita(int dia, int mes, int anyo, int hora, int minuto, String lugar,
+                                   String doctor, String notas) {
+        Calendar calendario = new GregorianCalendar();
+        calendario.set(anyo, mes, dia, hora, minuto);
+        Visita visita = new Visita(calendario, lugar, doctor, notas);
         GestionFirebase gf = new GestionFirebase();
-        gf.enviarDatosVisita(visita);*/
+        gf.enviarDatosVisita(visita);
     }
 
     /**
