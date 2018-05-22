@@ -2,7 +2,7 @@ package com.a3house.appmedica.appmedica;
 
 public class PreferenceHelper {
 
-        final public static String KEY_DEMO_NAME = "Usuario";
+        final public static String KEY_DEMO_NAME = "usuarios";
         public static void setName(String value) {
             MainActivity.preferences.edit().putString(KEY_DEMO_NAME, value ).commit();
         }

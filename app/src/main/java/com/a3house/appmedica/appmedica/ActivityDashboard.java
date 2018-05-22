@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import static com.a3house.appmedica.appmedica.PreferenceHelper.getName;
+
 public class ActivityDashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -29,7 +31,7 @@ public class ActivityDashboard extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         //Recuperamos el nombre del usuario
-        String nombreUsuario = "USUARIO";
+        String nombreUsuario = getName();
 
         //Mensaje de bienvenida
         Toast bienvenida = Toast.makeText(getApplicationContext(), "¡Hola!" + nombreUsuario + "Cada día estás más cerca de tu objetivo", Toast.LENGTH_LONG);

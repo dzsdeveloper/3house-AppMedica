@@ -22,26 +22,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*Add a static method to use SharedPreference without Context Object
+        //Add a static method to use SharedPreference without Context Object
         preferences = getSharedPreferences( getPackageName() + "_preferences", MODE_PRIVATE);
 
         //Recuperamos el valor guardado en SharedPreferences
-        SharedPreferences settings = getSharedPreferences("usuarios", MODE_PRIVATE);
-        SharedPreferences comprobandoUser = getSharedPreferences("usuarios", MODE_PRIVATE);
-        String valor="";
-        String nombre = settings.getString("usuarios",valor);*/
-
         //Comprobamos si ya hay un usuario guardado
         String nombre = getName();
+
         if (nombre.equals("") ) {
             //Envia al nuevo usuario al registro
             Intent lanzadorRegistro = new Intent(this, ActivityRegistro.class);
             this.startActivity(lanzadorRegistro);
         }else {
             //Envia al usuario registrado al Dashboard
-            Intent lanzadorDashboard = new Intent(this, ActivityDashboard.class);
-            this.startActivity(lanzadorDashboard);
+             Intent lanzadorDashboard = new Intent(this, ActivityDashboard.class);
+             this.startActivity(lanzadorDashboard);
         }
+
     }
 
 }

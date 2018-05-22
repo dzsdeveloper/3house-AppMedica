@@ -51,11 +51,6 @@ public class GestionFirebase {
 
         //Guardamos el nombre del usuario en SharedPreferences
         String userName = u.getNombre();
-        /*
-        SharedPreferences settings = getSharedPreferences("usuarios", MODE_PRIVATE);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("usuarios", userName);
-        editor.commit();*/
         setName(userName);
     }
 
