@@ -199,13 +199,13 @@ class Visita2 {
         this.doctor = doctor;
         this.notas = notas;
     }
-public Visita2(Visita v){
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
-    this.fecha = sdf.format(v.getFecha().getTime());
-    this.lugar = v.getLugar();
-    this.doctor = v.getDoctor();
-    this.notas = v.getNotas();
-}
+    public Visita2(Visita v){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        this.fecha = sdf.format(v.getFecha().getTime());
+        this.lugar = v.getLugar();
+        this.doctor = v.getDoctor();
+        this.notas = v.getNotas();
+    }
     //getters y setters
     public String getFecha() {
         // TODO implement here
