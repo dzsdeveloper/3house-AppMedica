@@ -35,9 +35,35 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test__recycler_view);
         //RecyclerView
-        Button btncoche = (Button) findViewById(R.id.btnEnviar);
+        Button btn1 = (Button) findViewById(R.id.btnEnviar);
+        Button btn2 = (Button) findViewById(R.id.button3);
+        Button btn3 = (Button) findViewById(R.id.button4);
         rv = (RecyclerView) findViewById(R.id.recycler);
         rv.setLayoutManager(new LinearLayoutManager(this));
+        //Implementar Usuario
+        rv.setAdapter(adpU);
+        gf.crearReferencia().child("perfil").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstUser.removeAll(lstUser);
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    Usuario2 user = new Usuario2((String) hm.get("nombre"),
+                            (String) hm.get("apellidos"),
+                            Integer.parseInt(String.valueOf(hm.get("altura"))),(String) hm.get("sexo"));
+                    lstUser.add(user);
+                }
+                adpU.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+    public void verU(View v){
         //Implementar Usuario
         rv.setAdapter(adpU);
         gf.crearReferencia().child("perfil").addValueEventListener(new ValueEventListener() {
@@ -60,6 +86,17 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
 
             }
         });
+        /*
+        Usuario usr = new Usuario("Gabriel","Tello",170,'M');
+        Calendar calendar = Calendar.getInstance();
+        Visita vst = new Visita(calendar,"Barcelona","Doctor1","Nota1");
+        Peso pso = new Peso(calendar,2,2.5,"notas",3.5);
+        gf.enviarDatosUsuario(usr);
+        gf.enviarDatosVisita(vst);
+        gf.enviarDatosPeso(pso);
+        */
+    }
+    public void verP(View v){
         //Implementar Peso
         rv.setAdapter(adpP);
         gf.crearReferencia().child("pesos").addValueEventListener(new ValueEventListener() {
@@ -71,8 +108,8 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
                     Peso2 p = new Peso2((String) hm.get("fecha"),Integer.parseInt(String.valueOf(hm.get("variacion"))),Double.parseDouble(String.valueOf(hm.get("imc"))),(String) hm.get("notas"),Double.parseDouble(String.valueOf(hm.get("valor"))) );
                     lstPeso.add(p);
                 }
-                Peso2 p2 = gf.recibirPeso(lstPeso);
-                lstPeso = gf.recibirPesoHistorico(lstPeso);
+                //Peso2 p2 = gf.recibirPeso(lstPeso);
+                //lstPeso = gf.recibirPesoHistorico(lstPeso);
                 adpP.notifyDataSetChanged();
             }
 
@@ -81,8 +118,10 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
 
             }
         });
+    }
+    public void verV(View v){
         //Implementar Visita
-        //rv.setAdapter(adpV);
+        rv.setAdapter(adpV);
         gf.crearReferencia().child("visitas").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -92,8 +131,8 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
                     Visita2 v = new Visita2((String) hm.get("fecha"),(String) hm.get("lugar"),(String) hm.get("doctor"),(String) hm.get("notas"));
                     lstVisita.add(v);
                 }
-                Visita2 v2 = gf.recibirVisita(lstVisita);
-                lstVisita = gf.recibirVisitaHistorico(lstVisita);
+                //Visita2 v2 = gf.recibirVisita(lstVisita);
+                //lstVisita = gf.recibirVisitaHistorico(lstVisita);
                 adpV.notifyDataSetChanged();
             }
 
@@ -103,14 +142,4 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
             }
         });
     }
-    public void ver(View v){
-        Usuario usr = new Usuario("Gabriel","Tello",170,'M');
-        Calendar calendar = Calendar.getInstance();
-        Visita vst = new Visita(calendar,"Barcelona","Doctor1","Nota1");
-        Peso pso = new Peso(calendar,2,2.5,"notas",3.5);
-        gf.enviarDatosUsuario(usr);
-        gf.enviarDatosVisita(vst);
-        gf.enviarDatosPeso(pso);
-    }
-
 }
