@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class TestActivity_RecyclerView extends AppCompatActivity {
+    //variables
     RecyclerView rv;
     List<Usuario2> lstUser = new ArrayList<>();
     List<Peso2> lstPeso = new ArrayList<>();
@@ -33,9 +34,11 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test__recycler_view);
+        //RecyclerView
         Button btncoche = (Button) findViewById(R.id.btnEnviar);
         rv = (RecyclerView) findViewById(R.id.recycler);
         rv.setLayoutManager(new LinearLayoutManager(this));
+        //Implementar Usuario
         rv.setAdapter(adpU);
         gf.crearReferencia().child("perfil").addValueEventListener(new ValueEventListener() {
             @Override
@@ -46,6 +49,7 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
                     Usuario2 user = new Usuario2((String) hm.get("nombre"),
                             (String) hm.get("apellidos"),
                             Integer.parseInt(String.valueOf(hm.get("altura"))),(String) hm.get("sexo"));
+
                     lstUser.add(user);
                 }
                 adpU.notifyDataSetChanged();
@@ -56,6 +60,7 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
 
             }
         });
+        //Implementar Peso
         rv.setAdapter(adpP);
         gf.crearReferencia().child("pesos").addValueEventListener(new ValueEventListener() {
             @Override
@@ -76,8 +81,8 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
 
             }
         });
+        //Implementar Visita
         //rv.setAdapter(adpV);
-
         gf.crearReferencia().child("visitas").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -99,7 +104,6 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
         });
     }
     public void ver(View v){
-        //gf.recibirDatos();
         Usuario usr = new Usuario("Gabriel","Tello",170,'M');
         Calendar calendar = Calendar.getInstance();
         Visita vst = new Visita(calendar,"Barcelona","Doctor1","Nota1");
