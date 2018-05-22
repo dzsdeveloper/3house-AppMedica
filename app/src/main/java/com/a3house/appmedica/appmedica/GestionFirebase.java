@@ -112,8 +112,85 @@ public class GestionFirebase {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-        //p = lstPeso.get(lstPeso.size()-1);
         return lstPeso;
+    }
+    public Usuario2 recibirUsuario(final List<Usuario2> lstUser){
+        Usuario2 u;
+        crearReferencia().child("perfil").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstUser.removeAll(lstUser);
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    Usuario2 user = new Usuario2((String) hm.get("nombre"),
+                            (String) hm.get("apellidos"),
+                            Integer.parseInt(String.valueOf(hm.get("altura"))),(String) hm.get("sexo"));
+                    lstUser.add(user);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+        u = lstUser.get(lstUser.size()-1);
+        return u;
+    }
+    public List<Usuario2> recibirUsuarioHistorico(final List<Usuario2> lstUser){
+        Usuario2 u;
+        crearReferencia().child("perfil").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstUser.removeAll(lstUser);
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    Usuario2 user = new Usuario2((String) hm.get("nombre"),
+                            (String) hm.get("apellidos"),
+                            Integer.parseInt(String.valueOf(hm.get("altura"))),(String) hm.get("sexo"));
+                    lstUser.add(user);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+        return lstUser;
+    }
+    public Visita2 recibirVisita(final List<Visita2> lstVst){
+        Visita2 v;
+        crearReferencia().child("visitas").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstVst.removeAll(lstVst);
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    Visita2 v = new Visita2((String) hm.get("fecha"),(String) hm.get("lugar"),(String) hm.get("doctor"),(String) hm.get("notas"));
+                    lstVst.add(v);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+        v = lstVst.get(lstVst.size()-1);
+        return v;
+    }
+    public List<Visita2> recibirVisitaHistorico(final List<Visita2> lstVst){
+        Visita2 v;
+        crearReferencia().child("visitas").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstVst.removeAll(lstVst);
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    Visita2 v = new Visita2((String) hm.get("fecha"),(String) hm.get("lugar"),(String) hm.get("doctor"),(String) hm.get("notas"));
+                    lstVst.add(v);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+        return lstVst;
     }
 }
 
@@ -136,13 +213,13 @@ class Visita2 {
         this.doctor = doctor;
         this.notas = notas;
     }
-public Visita2(Visita v){
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
-    this.fecha = sdf.format(v.getFecha().getTime());
-    this.lugar = v.getLugar();
-    this.doctor = v.getDoctor();
-    this.notas = v.getNotas();
-}
+    public Visita2(Visita v){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        this.fecha = sdf.format(v.getFecha().getTime());
+        this.lugar = v.getLugar();
+        this.doctor = v.getDoctor();
+        this.notas = v.getNotas();
+    }
     //getters y setters
     public String getFecha() {
         // TODO implement here

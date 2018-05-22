@@ -46,7 +46,6 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
                     Usuario2 user = new Usuario2((String) hm.get("nombre"),
                             (String) hm.get("apellidos"),
                             Integer.parseInt(String.valueOf(hm.get("altura"))),(String) hm.get("sexo"));
-
                     lstUser.add(user);
                 }
                 adpU.notifyDataSetChanged();
@@ -67,8 +66,8 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
                     Peso2 p = new Peso2((String) hm.get("fecha"),Integer.parseInt(String.valueOf(hm.get("variacion"))),Double.parseDouble(String.valueOf(hm.get("imc"))),(String) hm.get("notas"),Double.parseDouble(String.valueOf(hm.get("valor"))) );
                     lstPeso.add(p);
                 }
-                //Peso2 p2 = lstPeso.get(lstPeso.size()-1);
                 Peso2 p2 = gf.recibirPeso(lstPeso);
+                lstPeso = gf.recibirPesoHistorico(lstPeso);
                 adpP.notifyDataSetChanged();
             }
 
@@ -78,6 +77,7 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
             }
         });
         //rv.setAdapter(adpV);
+
         gf.crearReferencia().child("visitas").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -87,6 +87,8 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
                     Visita2 v = new Visita2((String) hm.get("fecha"),(String) hm.get("lugar"),(String) hm.get("doctor"),(String) hm.get("notas"));
                     lstVisita.add(v);
                 }
+                Visita2 v2 = gf.recibirVisita(lstVisita);
+                lstVisita = gf.recibirVisitaHistorico(lstVisita);
                 adpV.notifyDataSetChanged();
             }
 
