@@ -10,6 +10,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 
+import butterknife.ButterKnife;
+
 import static com.a3house.appmedica.appmedica.PreferenceHelper.getName;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,13 +23,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         //Add a static method to use SharedPreference without Context Object
         preferences = getSharedPreferences( getPackageName() + "_preferences", MODE_PRIVATE);
 
         //Recuperamos el valor guardado en SharedPreferences
         //Comprobamos si ya hay un usuario guardado
-        String nombre = getName();
+        //String nombre = getName();
+        String nombre = "Paco";
 
         if (nombre.equals("") ) {
             //Envia al nuevo usuario al registro

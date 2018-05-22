@@ -34,7 +34,7 @@ public class GestionPeso implements View.OnClickListener {
         NumberPicker numberpickerKilos,numberPickerGramos;
 
         final Dialog dialog = new Dialog(activity);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.cuadro_dialogo_plantilla2);
 
