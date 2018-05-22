@@ -28,9 +28,11 @@ public class ActivityDashboard extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Recuperamos el nombre del usuario
+        String nombreUsuario = "USUARIO";
+
         //Mensaje de bienvenida
-        // + Usuario.nombre
-        Toast bienvenida = Toast.makeText(getApplicationContext(), "¡Hola! Cada día estás más cerca de tu objetivo", Toast.LENGTH_LONG);
+        Toast bienvenida = Toast.makeText(getApplicationContext(), "¡Hola!" + nombreUsuario + "Cada día estás más cerca de tu objetivo", Toast.LENGTH_LONG);
         bienvenida.setGravity(Gravity.CENTER, 0,0);
         bienvenida.show();
 
