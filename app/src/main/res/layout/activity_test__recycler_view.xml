@@ -15,12 +15,56 @@
             android:id="@+id/btnEnviar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="ver"
-            android:text="@string/btnEnviar" />
+            android:onClick="verU"
+            android:text="Usuario" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="verP"
+            android:text="Peso" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="verV"
+            android:text="Visita" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="200px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Perfil" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="200px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Peso" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="200px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Visita" />
+
+        </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

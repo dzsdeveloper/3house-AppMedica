@@ -1,6 +1,7 @@
 package com.a3house.appmedica.appmedica;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import static android.content.Context.MODE_PRIVATE;
+import static com.a3house.appmedica.appmedica.PreferenceHelper.setName;
 
 /**
  *
@@ -44,7 +48,12 @@ public class GestionFirebase {
     public void enviarDatosUsuario(Usuario u) {
         // TODO implement here
         crearReferencia().child(USUARIO_REFERENCE).push().setValue(new Usuario2(u));
+
+        //Guardamos el nombre del usuario en SharedPreferences
+        String userName = u.getNombre();
+        setName(userName);
     }
+
     public void enviarDatosVisita(Visita v) {
         // TODO implement here
         crearReferencia().child(VISITA2_REFERENCE).push().setValue(new Visita2(v));
