@@ -18,6 +18,12 @@ import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+import static com.a3house.appmedica.appmedica.PreferenceHelper.getName;
+import static com.a3house.appmedica.appmedica.PreferenceHelper.logOutUser;
+
 public class ActivityDashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -25,18 +31,24 @@ public class ActivityDashboard extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        //Implementamos Butterknife
+        ButterKnife.bind(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Recuperamos el nombre del usuario
+        String nombreUsuario = getName();
+
         //Mensaje de bienvenida
-        // + Usuario.nombre
-        Toast bienvenida = Toast.makeText(getApplicationContext(), "¡Hola! Cada día estás más cerca de tu objetivo", Toast.LENGTH_LONG);
+        Toast bienvenida = Toast.makeText(getApplicationContext(), "¡Hola!" + nombreUsuario + "Cada día estás más cerca de tu objetivo", Toast.LENGTH_LONG);
         bienvenida.setGravity(Gravity.CENTER, 0,0);
         bienvenida.show();
 
-        //Botón con icono bascula
-        //para introducir el peso
+        //Botón con icono bascula para introducir el peso
         // si el usuario ya ha introducido el peso sale un mensaje
+
         ImageButton botonBascula = (ImageButton) findViewById(R.id.btnBascula);
         botonBascula.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,8 +96,9 @@ public class ActivityDashboard extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_logout) {
+            logOutUser();
+            this.finish();
         }
 
         return super.onOptionsItemSelected(item);
