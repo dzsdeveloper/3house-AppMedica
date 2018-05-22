@@ -37,10 +37,10 @@ public class GestionPeso implements View.OnClickListener {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.cuadro_dialogo_plantilla2);
+        dialog.setTitle("Introduce tu peso");
 
 
-       /* TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
-        text.setText(msg);*/
+
         numberpickerKilos = (NumberPicker)dialog.findViewById(R.id.numberPickerKilos);
         numberPickerGramos = (NumberPicker)dialog.findViewById(R.id.numberPickerGramos);
 
@@ -97,12 +97,7 @@ public class GestionPeso implements View.OnClickListener {
 
     }
 
-  /*  private void showDatePickerDialog(Activity activity) {
-        DatePickerFragment newFragment = new DatePickerFragment();
-        newFragment.show(activity.getFragmentManager(),"datePicker");
 
-        //MainActivity.this.getActivityContext()
-    }*/
 
     private void showDatePickerDialog(Activity activity, final EditText etFecha ) {
 
@@ -116,19 +111,10 @@ public class GestionPeso implements View.OnClickListener {
             }
         });
         newFragment.show(activity.getFragmentManager(),"datePicker");
-        //(activity.getSupportFragmentManager(), "datePicker");
+
     }
 
 
-
-
-
-    /**
-     * val= peso
-       alt= altura
-       imc = el índice de masa corporal
-       la formula para calcular el imc es imc= val/(alt*alt)
-     */
     public double calcularIMC(Usuario usuario, Peso peso) {
         // TODO  recibir los datos del Firebase sobre el usuario, comprobar que la division de double entre int no da problemas
         //Clase Usuario altura en centimetros
