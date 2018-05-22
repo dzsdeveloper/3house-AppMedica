@@ -59,18 +59,9 @@ public class GestionPeso implements View.OnClickListener {
 
 
 
-        //Accion de DatePicker HOY
-        final EditText etFechaHoy = (EditText) dialog.findViewById(R.id.etPlannedDateHOY);
 
-        etFechaHoy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDatePickerDialog(activity,etFechaHoy);
 
-            }
-        });
-
-        //Accion de DatePicker HOY
+        //Accion de DatePicker ELEGIR FECHA
         final EditText etFechaElegir = (EditText) dialog.findViewById(R.id.etPlannedDateELEGIR);
 
         etFechaElegir.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +79,17 @@ public class GestionPeso implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 //TODO GUARDAR LA INFO EN LA BASE DE DATOS;
+            }
+        });
+
+        //Accion boton cancelar
+        Button btcancelar= (Button) dialog.findViewById(R.id.bt_cancelar);
+
+        btcancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+
             }
         });
 
