@@ -41,6 +41,13 @@ public class GestionPeso implements View.OnClickListener {
 
 
 
+
+
+
+
+
+
+
         numberpickerKilos = (NumberPicker)dialog.findViewById(R.id.numberPickerKilos);
         numberPickerGramos = (NumberPicker)dialog.findViewById(R.id.numberPickerGramos);
 
