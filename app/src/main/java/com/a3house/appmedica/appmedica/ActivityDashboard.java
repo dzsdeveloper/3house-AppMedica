@@ -43,7 +43,7 @@ public class ActivityDashboard extends AppCompatActivity
         String nombreUsuario = getName();
 
         //Mensaje de bienvenida
-        Toast bienvenida = Toast.makeText(getApplicationContext(), "¡Hola!" + nombreUsuario + "Cada día estás más cerca de tu objetivo" , Toast.LENGTH_LONG);
+        Toast bienvenida = Toast.makeText(getApplicationContext(), "¡Hola " + nombreUsuario + "!" + " Cada día estás más cerca de tu objetivo" , Toast.LENGTH_LONG);
         bienvenida.setGravity(Gravity.CENTER, 0,0);
         bienvenida.show();
 
@@ -58,6 +58,28 @@ public class ActivityDashboard extends AppCompatActivity
         Button btnIMCActual = (Button) findViewById(R.id.btnIMCActual);
         btnIMCActual.setText("22");
 
+        //Creamos un escuchador al hacer click sobre el IMC
+        //que mostrará más info sobre el IMC
+
+        btnIMCActual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Tu IMC (índice de masa corporal) corresponde al de una complexión delgada", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                        }
+        });
+
+        //Creamos un escuchador al hacer click sobre el Peso Actual
+        //muestra un mensaje motivador
+
+        btnPesoActual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "¡Enhorabuena! Cada día estás más cerca de tu peso ideal :) ", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
         //Botón con icono bascula para introducir el peso
         // si el usuario ya ha introducido el peso sale un mensaje
 
@@ -65,8 +87,6 @@ public class ActivityDashboard extends AppCompatActivity
         botonBascula.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Snackbar.make(view, "Ya has introducido tu peso hoy", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
                 GestionPeso gp = new GestionPeso();
                 gp.introducirPesoshowDialog(ActivityDashboard.this ,"Introduce tu peso");
             }
@@ -132,23 +152,21 @@ public class ActivityDashboard extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.menu_principal) {
             // Handle the camera action
             //boton del menu para volver al Dashboard
             Intent lanzadorDashboard = new Intent(this, ActivityDashboard.class);
             this.startActivity(lanzadorDashboard);
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.mi_perfil) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.lista_pesos) {
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nueva_visita) {
             Intent lanzadorNuevaVisita = new Intent(this, ActivityNuevaVisita.class);
             this.startActivity(lanzadorNuevaVisita);
-        } else if (id == R.id.nav_send) {
-            Intent lanzadorListaVisitas = new Intent(this, ActivityListaVisitas.class);
-            this.startActivity(lanzadorListaVisitas);
+        } else if (id == R.id.lista_visita) {
+            Intent lanzadorListaVisita = new Intent(this, ActivityListaVisitas.class);
+            this.startActivity(lanzadorListaVisita);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
