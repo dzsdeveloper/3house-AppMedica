@@ -68,7 +68,17 @@ public class ActivityDashboard extends AppCompatActivity
                 /*Snackbar.make(view, "Ya has introducido tu peso hoy", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
                 GestionPeso gp = new GestionPeso();
-                gp.introducirPesoshowDialog(ActivityDashboard.this ,"introduce tu peso");
+                gp.introducirPesoshowDialog(ActivityDashboard.this ,"Introduce tu peso");
+            }
+        });
+
+        //Si clickan en el texto se llama a la misma función
+        ImageButton botonBasculaTexto = (ImageButton) findViewById(R.id.btnBasculaText);
+        botonBasculaTexto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GestionPeso gp = new GestionPeso();
+                gp.introducirPesoshowDialog(ActivityDashboard.this ,"Introduce tu peso");
             }
         });
 

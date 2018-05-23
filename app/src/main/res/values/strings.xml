@@ -36,6 +36,8 @@
     <string name="tvLugar">TextView</string>
     <string name="tvNotasVisita">TextView</string>
 
+    <string name="btnBascula">INTRODUCIR PESO</string>
+
     <!--Strings Nueva visita -->
     <string name="doctor1">Dr. Mercader</string>
     <string name="doctor2">Dra. Lorenz</string>
