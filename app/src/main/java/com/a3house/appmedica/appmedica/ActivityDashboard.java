@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -42,9 +43,20 @@ public class ActivityDashboard extends AppCompatActivity
         String nombreUsuario = getName();
 
         //Mensaje de bienvenida
-        Toast bienvenida = Toast.makeText(getApplicationContext(), "¡Hola!" + nombreUsuario + "Cada día estás más cerca de tu objetivo", Toast.LENGTH_LONG);
+        Toast bienvenida = Toast.makeText(getApplicationContext(), "¡Hola!" + nombreUsuario + "Cada día estás más cerca de tu objetivo" , Toast.LENGTH_LONG);
         bienvenida.setGravity(Gravity.CENTER, 0,0);
         bienvenida.show();
+
+        //Recuperamos el último peso subido al Firebase
+
+
+        //Recuperamos el boton donde se muestra el Peso Actual
+        Button btnPesoActual = (Button) findViewById(R.id.btnPesoActual);
+        btnPesoActual.setText("68");
+
+        //Recuperamos el boton donde se muestra el IMC Actual
+        Button btnIMCActual = (Button) findViewById(R.id.btnIMCActual);
+        btnIMCActual.setText("22");
 
         //Botón con icono bascula para introducir el peso
         // si el usuario ya ha introducido el peso sale un mensaje
