@@ -7,6 +7,7 @@
     android:background="@drawable/bordes_redondos">
 
 
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -27,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="INTRODUCE TU PESO"
+            android:text="@string/introduce_tu_peso"
             android:textAlignment="center"
             android:textSize="24sp"
             tools:layout_editor_absoluteX="16dp"
@@ -63,7 +64,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text=","
+            android:text="@string/separadorPeso"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -84,11 +85,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:baselineAligned="false">
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/tilPlannedDateELEGIR"
-            android:layout_width="484dp"
+            android:layout_width="0dp"
             android:layout_height="325dp"
             android:layout_weight="1"
             tools:layout_editor_absoluteX="204dp"
@@ -101,7 +103,7 @@
                 android:clickable="true"
                 android:focusable="false"
                 android:gravity="center"
-                android:hint="ELEGIR FECHA"
+                android:hint="@string/elegir_fecha"
                 android:inputType="date"
                 android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
@@ -123,7 +125,7 @@
             android:layout_width="178dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="CANCELAR"
+            android:text="@string/cancelar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +136,7 @@
             android:layout_width="169dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="GUARDAR"
+            android:text="@string/guardar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"

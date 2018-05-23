@@ -8,6 +8,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import java.util.Date;
 
 import java.util.Calendar;
 
@@ -55,5 +56,31 @@ public class ClaseAuxiliar {
 
 
 
+    /*
+    * Devuelve la fecha de hoy en formato dd/mm/aaaa
+    * Como un String separado por "/" teniendo en cuenta que si es menor de 9 añade un cero a la izquierda
+    * */
+    public StringBuilder sacarFechaHoy (){
+
+
+
+
+        final Calendar c = Calendar.getInstance();
+        int yy = c.get(Calendar.YEAR);
+        int mm = c.get(Calendar.MONTH);
+        int dd = c.get(Calendar.DAY_OF_MONTH);
+
+
+        // Contruimos el String que vamos a devolver
+        StringBuilder hoy = new StringBuilder()
+                // Mes empieza por cero asi que añadimos 1
+                .append((dd <10)?"0"+dd:String.valueOf(dd)).append("/")
+                .append((mm++ <10)?"0"+mm:String.valueOf(mm)).append("/")
+                .append(yy).append("");
+
+
+
+        return hoy;
+    }
 
 }
