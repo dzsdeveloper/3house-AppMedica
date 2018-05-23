@@ -55,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Recuperamos el valor guardado en SharedPreferences
         //y comprobamos si ya hay un usuario guardado
-        /*String nombre = getName();
-        String nombre = "Paco";
+        String nombre = getName();
 
         if (nombre.equals("") ) {
             //Envia al nuevo usuario al registro
@@ -65,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
             //Envia al usuario registrado al Dashboard
             lanzadorDashboard();
         }
-        */
     }
 
     public void lanzadorRegistro(){

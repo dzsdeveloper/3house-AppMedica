@@ -73,7 +73,7 @@ public class ActivityDashboard extends AppCompatActivity
         });
 
         //Si clickan en el texto se llama a la misma función
-        ImageButton botonBasculaTexto = (ImageButton) findViewById(R.id.btnBasculaText);
+        Button botonBasculaTexto = (Button) findViewById(R.id.btnBasculaText);
         botonBasculaTexto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
