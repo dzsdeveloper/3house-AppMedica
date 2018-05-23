@@ -34,12 +34,10 @@ public class GestionPeso implements View.OnClickListener {
         NumberPicker numberpickerKilos,numberPickerGramos;
 
         final Dialog dialog = new Dialog(activity);
-        dialog.requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+        //dialog.requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.cuadro_dialogo_plantilla2);
-        dialog.setTitle("Introduce tu peso");
-
-
+        ///dialog.setTitle();
 
 
 
@@ -70,6 +68,8 @@ public class GestionPeso implements View.OnClickListener {
 
         //Accion de DatePicker ELEGIR FECHA
         final EditText etFechaElegir = (EditText) dialog.findViewById(R.id.etPlannedDateELEGIR);
+        ClaseAuxiliar claseaux = new ClaseAuxiliar();
+        etFechaElegir.setText(claseaux.sacarFechaHoy());
 
         etFechaElegir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +86,9 @@ public class GestionPeso implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 //TODO GUARDAR LA INFO EN LA BASE DE DATOS;
+
+
+
             }
         });
 
@@ -114,8 +117,9 @@ public class GestionPeso implements View.OnClickListener {
         DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                // +1 because january is zero
-                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                // Añadimos uno al mes inicial porque empieza en cero
+                final String selectedDate = ((day<10)?"0"+day:String.valueOf(day)) + "/" + (((month++)<10)?"0"+month:String.valueOf(month)) + "/" + year;
+
                 etFecha.setText(selectedDate);
             }
         });

@@ -40,5 +40,10 @@
     <string name="doctor1">Dr. Mercader</string>
     <string name="doctor2">Dra. Lorenz</string>
     <string name="doctor3">Dr. Williams</string>
+    <string name="guardar">GUARDAR</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="elegir_fecha">ELEGIR FECHA</string>
+    <string name="separadorPeso">,</string>
+    <string name="introduce_tu_peso">INTRODUCE TU PESO</string>
 
 </resources>
