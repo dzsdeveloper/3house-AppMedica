@@ -152,23 +152,21 @@ public class ActivityDashboard extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.menu_principal) {
             // Handle the camera action
             //boton del menu para volver al Dashboard
             Intent lanzadorDashboard = new Intent(this, ActivityDashboard.class);
             this.startActivity(lanzadorDashboard);
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.mi_perfil) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.lista_pesos) {
 
         } else if (id == R.id.nueva_visita) {
             Intent lanzadorNuevaVisita = new Intent(this, ActivityNuevaVisita.class);
             this.startActivity(lanzadorNuevaVisita);
         } else if (id == R.id.lista_visita) {
-            //Intent lanzadorListaVisita = new Intent(this, ActivityListaVisitas.class);
-            //this.startActivity(lanzadorListaVisita);
+            Intent lanzadorListaVisita = new Intent(this, ActivityListaVisitas.class);
+            this.startActivity(lanzadorListaVisita);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
