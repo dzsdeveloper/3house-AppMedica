@@ -63,6 +63,7 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
         });
 
     }
+
     public void verU(View v){
         //Implementar Usuario
         rv.setAdapter(adpU);
@@ -75,7 +76,6 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
                     Usuario2 user = new Usuario2((String) hm.get("nombre"),
                             (String) hm.get("apellidos"),
                             Integer.parseInt(String.valueOf(hm.get("altura"))),(String) hm.get("sexo"));
-
                     lstUser.add(user);
                 }
                 adpU.notifyDataSetChanged();
@@ -86,15 +86,6 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
 
             }
         });
-        /*
-        Usuario usr = new Usuario("Gabriel","Tello",170,'M');
-        Calendar calendar = Calendar.getInstance();
-        Visita vst = new Visita(calendar,"Barcelona","Doctor1","Nota1");
-        Peso pso = new Peso(calendar,2,2.5,"notas",3.5);
-        gf.enviarDatosUsuario(usr);
-        gf.enviarDatosVisita(vst);
-        gf.enviarDatosPeso(pso);
-        */
     }
     public void verP(View v){
         //Implementar Peso
@@ -102,14 +93,33 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
         gf.crearReferencia().child("pesos").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                Peso2 p=new Peso2();
+                final double var1,var2,var3;
                 lstPeso.removeAll(lstPeso);
                 for (DataSnapshot snapshot:dataSnapshot.getChildren()){
                     HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
-                    Peso2 p = new Peso2((String) hm.get("fecha"),Integer.parseInt(String.valueOf(hm.get("variacion"))),Double.parseDouble(String.valueOf(hm.get("imc"))),(String) hm.get("notas"),Double.parseDouble(String.valueOf(hm.get("valor"))) );
+                    p = new Peso2((String) hm.get("fecha"),Integer.parseInt(String.valueOf(hm.get("variacion"))),Double.parseDouble(String.valueOf(hm.get("imc"))),(String) hm.get("notas"),Double.parseDouble(String.valueOf(hm.get("valor"))) );
                     lstPeso.add(p);
                 }
                 //Peso2 p2 = gf.recibirPeso(lstPeso);
                 //lstPeso = gf.recibirPesoHistorico(lstPeso);
+                //Calculo de la variacion de los 2 ultimos pesos
+                var1 = p.getValor();
+                var2 = lstPeso.get(lstPeso.size()-2).getValor();
+                var3=var1-var2;
+                //Recuperar la altura de un child especifico
+                gf.crearReferencia().child("altura").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        int h = Integer.parseInt(dataSnapshot.getValue().toString());
+                        //Calculo del IMC
+                        System.out.println("El IMC es: "+(var3+h));
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
                 adpP.notifyDataSetChanged();
             }
 

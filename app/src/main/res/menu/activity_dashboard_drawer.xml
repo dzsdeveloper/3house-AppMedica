@@ -25,11 +25,11 @@
     <item android:title="Visitas Médicas">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/nueva_visita"
+                android:icon="@drawable/nueva_visita"
                 android:title="Nueva Visita" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/lista_visita"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Lista Visitas" />
         </menu>
