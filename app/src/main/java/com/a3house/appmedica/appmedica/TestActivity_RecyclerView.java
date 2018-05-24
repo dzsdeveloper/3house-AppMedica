@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,7 +43,7 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this));
         //Implementar Usuario
         rv.setAdapter(adpU);
-        gf.crearReferencia().child("perfil").addValueEventListener(new ValueEventListener() {
+        gf.crearReferencia().child("perfil").limitToLast(2).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 lstUser.removeAll(lstUser);
@@ -52,6 +53,7 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
                             (String) hm.get("apellidos"),
                             Integer.parseInt(String.valueOf(hm.get("altura"))),(String) hm.get("sexo"));
                     lstUser.add(user);
+
                 }
                 adpU.notifyDataSetChanged();
             }
@@ -61,7 +63,6 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
 
             }
         });
-
     }
 
     public void verU(View v){
@@ -90,6 +91,17 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
     public void verP(View v){
         //Implementar Peso
         rv.setAdapter(adpP);
+        gf.crearReferencia().child("perfil-peso/altura").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int h = Integer.parseInt(dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         gf.crearReferencia().child("pesos").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

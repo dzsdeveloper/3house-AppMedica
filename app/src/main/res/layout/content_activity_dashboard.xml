@@ -9,35 +9,25 @@
     tools:showIn="@layout/app_bar_activity_dashboard">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp">
-
-    </LinearLayout>
-
-    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="24dp"
+            android:layout_marginStart="55dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnLabelPeso"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvLabelPeso"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/colorAccent"
-                android:text="PESO"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+                android:text="@string/labelPeso"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
             <Button
                 android:id="@+id/btnPesoActual"
@@ -46,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimary"
+                android:text="@string/pesoActualNull"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
         </LinearLayout>
 
@@ -58,8 +49,8 @@
             <Button
                 android:id="@+id/separador"
                 style="@android:style/Widget.Button"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/background_light"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
@@ -69,28 +60,26 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="24dp"
+            android:layout_marginEnd="24dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnLabelIMC"
-                style="@style/Widget.AppCompat.Button.Small"
+            <TextView
+                android:id="@+id/tvLabelImc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/colorAccent"
-                android:text="IMC"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+                android:text="@string/labelIMC"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
             <Button
                 android:id="@+id/btnIMCActual"
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="21,4"
+                android:text="@string/IMCActualNull"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
 
         </LinearLayout>

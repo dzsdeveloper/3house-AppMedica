@@ -22,6 +22,10 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_logout">Desconectarse</string>
     <string name="btnBascula">INTRODUCIR PESO</string>
+    <string name="pesoActualNull"> - - </string>
+    <string name="IMCActualNull"> - - </string>
+    <string name="labelPeso">Peso Actual</string>
+    <string name="labelIMC">Cálculo IMC</string>
 
     <!--Strings Nueva visita -->
     <string name="doctor1">Dr. Mercader</string>
