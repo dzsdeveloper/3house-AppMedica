@@ -53,6 +53,7 @@ public class GestionFirebase {
         crearReferencia().child(USUARIO_REFERENCE).push().setValue(new Usuario2(u));
         //Guardamos el valor de altura en un child especifico
         crearReferencia().child("altura").setValue(new Usuario2(u).getAltura());
+        crearReferencia().child("perfil-peso/altura").setValue(new Usuario2(u).getAltura());
         //Guardamos el valor de sexo en un child especifico
         crearReferencia().child("sexo").setValue(new Usuario2(u).getSexo());
 
@@ -76,14 +77,6 @@ public class GestionFirebase {
     /**
      *
      */
-    //Borrar
-    public void recibirDatos() {
-        // TODO implement here
-        final List<Usuario> lstUser = new ArrayList<>();
-        final List<String> lstIds = new ArrayList<>();
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = db.getReference(DEMO_REFERENCE);
-    }
 
     public Peso2 recibirPeso(final List<Peso2> lstPeso){
         Peso2 p;

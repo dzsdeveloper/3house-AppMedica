@@ -34,8 +34,6 @@ public class GestionVisita {
      */
     public void mostrarVisitas() {
         // TODO Pendiente. Falta saber como recibirá los datos de GestionFirebase
-        GestionFirebase gf = new GestionFirebase();
-        gf.recibirDatos();
 
     }
 
