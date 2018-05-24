@@ -5,32 +5,28 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/cardiograma"
-            android:title="Dashboard" />
+            android:id="@+id/menu_principal"
+            android:icon="@drawable/menu_principal_black"
+            android:title="Menu Principal" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:id="@+id/mi_perfil"
+            android:icon="@drawable/usuario"
             android:title="Mi perfil" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:id="@+id/lista_pesos"
+            android:icon="@drawable/grafica_black"
             android:title="Lista Pesos" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
     </group>
 
     <item android:title="Visitas Médicas">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/nueva_visita"
+                android:icon="@drawable/nueva_visita_black"
                 android:title="Nueva Visita" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/lista_visita"
+                android:icon="@drawable/historial_visitas_black"
                 android:title="Lista Visitas" />
         </menu>
     </item>

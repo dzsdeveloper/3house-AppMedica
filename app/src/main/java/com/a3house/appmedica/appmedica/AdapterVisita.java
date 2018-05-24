@@ -16,7 +16,7 @@ public class AdapterVisita extends RecyclerView.Adapter<AdapterVisita.AdapViewHo
     }
     @Override
     public AdapViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_recycler,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.visita_recycler,parent,false);
         AdapViewHolder holder = new AdapViewHolder(v);
         return holder;
     }

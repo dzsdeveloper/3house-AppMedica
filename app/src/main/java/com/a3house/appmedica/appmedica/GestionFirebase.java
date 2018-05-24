@@ -19,7 +19,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.a3house.appmedica.appmedica.PreferenceHelper.setAlturaUsuario;
 import static com.a3house.appmedica.appmedica.PreferenceHelper.setName;
+import static com.a3house.appmedica.appmedica.PreferenceHelper.setSexoUsuario;
 
 /**
  *
@@ -47,11 +49,20 @@ public class GestionFirebase {
     }
     public void enviarDatosUsuario(Usuario u) {
         // TODO implement here
+        //Guardamos el objeto Usuario
         crearReferencia().child(USUARIO_REFERENCE).push().setValue(new Usuario2(u));
+        //Guardamos el valor de altura en un child especifico
+        crearReferencia().child("altura").setValue(new Usuario2(u).getAltura());
+        //Guardamos el valor de sexo en un child especifico
+        crearReferencia().child("sexo").setValue(new Usuario2(u).getSexo());
 
-        //Guardamos el nombre del usuario en SharedPreferences
+        //Guardamos los datos del usuario en SharedPreferences
         String userName = u.getNombre();
         setName(userName);
+        String userAltura = String.valueOf(u.getAltura());
+        setAlturaUsuario(userAltura);
+        String userSexo = String.valueOf(u.getSexo());
+        setSexoUsuario(userSexo);
     }
 
     public void enviarDatosVisita(Visita v) {
@@ -65,6 +76,7 @@ public class GestionFirebase {
     /**
      *
      */
+    //Borrar
     public void recibirDatos() {
         // TODO implement here
         final List<Usuario> lstUser = new ArrayList<>();
@@ -72,6 +84,7 @@ public class GestionFirebase {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = db.getReference(DEMO_REFERENCE);
     }
+
     public Peso2 recibirPeso(final List<Peso2> lstPeso){
         Peso2 p;
         crearReferencia().child("pesos").addValueEventListener(new ValueEventListener() {

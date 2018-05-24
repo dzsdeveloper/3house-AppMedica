@@ -46,7 +46,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="78"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
         </LinearLayout>
 

@@ -18,7 +18,7 @@ public class GestionVisita {
     }
 
     /**
-     * Crea un objeto Visita y lo envía al método enviarDatosUsuario del objeto GestionFirebase
+     * Crea un objeto Visita y lo envía al método enviarDatosVisita del objeto GestionFirebase
      */
     public static void crearVisita(int dia, int mes, int anyo, int hora, int minuto, String lugar,
                                    String doctor, String notas) {
