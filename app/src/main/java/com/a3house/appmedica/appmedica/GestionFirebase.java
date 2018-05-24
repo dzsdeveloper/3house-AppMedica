@@ -59,7 +59,7 @@ public class GestionFirebase {
         //Guardamos los datos del usuario en SharedPreferences
         String userName = u.getNombre();
         setName(userName);
-        String userAltura = String.valueOf(u.getAltura());
+        int userAltura = u.getAltura();
         setAlturaUsuario(userAltura);
         String userSexo = String.valueOf(u.getSexo());
         setSexoUsuario(userSexo);

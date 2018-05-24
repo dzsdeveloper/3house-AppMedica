@@ -18,8 +18,8 @@ public class PreferenceHelper {
         }
 
         //Función para guardar la altura del usuario en SharedPreferences
-        public static void setAlturaUsuario(String value) {
-            MainActivity.preferences.edit().putString(KEY_ALTURA_USUARIO, value ).commit();
+        public static void setAlturaUsuario(int value) {
+            MainActivity.preferences.edit().putInt(KEY_ALTURA_USUARIO, value ).commit();
         }
 
         //Función para recuperar la altura del usuario de SharedPreferences
