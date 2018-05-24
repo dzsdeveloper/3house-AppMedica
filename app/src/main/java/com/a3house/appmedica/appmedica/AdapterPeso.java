@@ -18,7 +18,7 @@ public class AdapterPeso extends RecyclerView.Adapter<AdapterPeso.AdapViewHolder
 
     @Override
     public AdapViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_recycler,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.peso_recycler,parent,false);
         AdapViewHolder holder = new AdapViewHolder(v);
         return holder;
     }
@@ -28,7 +28,7 @@ public class AdapterPeso extends RecyclerView.Adapter<AdapterPeso.AdapViewHolder
              Peso2 pes = lstPeso.get(position);
             holder.tvfechapeso.setText(pes.getFecha());
             holder.tvimc.setText(String.valueOf(pes.getImc()));
-            holder.tvnotapeso.setText(pes.getNotas());
+            //holder.tvnotapeso.setText(pes.getNotas());
             holder.tvvalor.setText(String.valueOf(pes.getValor()));
             holder.tvvariacion.setText(String.valueOf(pes.getVariacion()));
     }
@@ -41,13 +41,11 @@ public class AdapterPeso extends RecyclerView.Adapter<AdapterPeso.AdapViewHolder
     class AdapViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvfechapeso,tvimc,tvvalor,tvvariacion,tvnotapeso;
-        //EditText tvnotapeso;
         public AdapViewHolder(View itemView) {
             super(itemView);
-                tvfechapeso = (TextView) itemView.findViewById(R.id.tvFecha);
+                tvfechapeso = (TextView) itemView.findViewById(R.id.tvFechaPeso);
                 tvimc = (TextView) itemView.findViewById(R.id.tvImc);
-                tvnotapeso = (TextView) itemView.findViewById(R.id.tvNotas);
-                //tvnotapeso = (EditText) itemView.findViewById(R.id.tvNotas);
+                //tvnotapeso = (TextView) itemView.findViewById(R.id.tvNotasPeso);
                 tvvalor = (TextView) itemView.findViewById(R.id.tvValor);
                 tvvariacion = (TextView) itemView.findViewById(R.id.tvVariacion);
         }

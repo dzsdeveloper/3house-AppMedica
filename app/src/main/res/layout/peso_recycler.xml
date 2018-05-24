@@ -10,36 +10,32 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tvDoctor"
-            android:layout_width="82dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Doctor"
-            android:textAlignment="viewStart" />
-
-        <TextView
-            android:id="@+id/tvFechaVisita"
+            android:id="@+id/tvValor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Fecha"
-            android:textAlignment="viewStart" />
+            android:text="Peso" />
 
         <TextView
-            android:id="@+id/tvLugar"
+            android:id="@+id/tvImc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Lugar"
-            android:textAlignment="viewStart" />
+            android:text="IMC" />
 
         <TextView
-            android:id="@+id/tvNotasVisita"
+            android:id="@+id/tvFechaPeso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Notas"
-            android:textAlignment="viewStart" />
+            android:text="Fecha" />
+
+        <TextView
+            android:id="@+id/tvVariacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Variación" />
 
     </LinearLayout>
 

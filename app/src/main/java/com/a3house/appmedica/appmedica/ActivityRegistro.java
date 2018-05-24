@@ -34,5 +34,6 @@ public class ActivityRegistro extends AppCompatActivity {
             sexo='M';
         Usuario usr = new Usuario(nombre.getText().toString(),apellidos.getText().toString(),Integer.parseInt(altura.getText().toString()),sexo);
         gf.enviarDatosUsuario(usr);
+        this.finish();
     }
 }
