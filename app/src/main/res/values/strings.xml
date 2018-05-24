@@ -21,14 +21,6 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_logout">Desconectarse</string>
-    <string name="tvTexto">TextView</string>
-    <string name="tvAlto">TextView</string>
-    <string name="btnEnviar">Button</string>
-    <string name="tvApellido">TextView</string>
-    <string name="tvImc">TextView</string>
-    <string name="tvValor">TextView</string>
-    <string name="tvVariacion">TextView</string>
-
     <string name="btnBascula">INTRODUCIR PESO</string>
 
     <!--Strings Nueva visita -->
