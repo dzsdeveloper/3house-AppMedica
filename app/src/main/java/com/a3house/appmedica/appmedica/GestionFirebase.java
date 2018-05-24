@@ -74,6 +74,8 @@ public class GestionFirebase {
     public void enviarDatosPeso(Peso p) {
         // TODO implement here
         crearReferencia().child(PESO2_REFERENCE).push().setValue(new Peso2(p));
+        //Guardamos el valor de peso en un child especifico
+        crearReferencia().child("perfil-peso/peso").setValue(new Peso2(p).getValor());
     }
     /**
      *
