@@ -11,31 +11,35 @@
 
         <TextView
             android:id="@+id/tvDoctor"
-            android:layout_width="wrap_content"
+            android:layout_width="82dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Doctor" />
+            android:text="Doctor"
+            android:textAlignment="viewStart" />
 
         <TextView
             android:id="@+id/tvFechaVisita"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Fecha" />
+            android:text="Fecha"
+            android:textAlignment="viewStart" />
 
         <TextView
             android:id="@+id/tvLugar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Lugar" />
+            android:text="Lugar"
+            android:textAlignment="viewStart" />
 
         <TextView
             android:id="@+id/tvNotasVisita"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Notas" />
+            android:text="Notas"
+            android:textAlignment="viewStart" />
 
     </LinearLayout>
 
