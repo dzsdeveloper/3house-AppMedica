@@ -99,8 +99,7 @@ public class GestionPeso implements View.OnClickListener {
                 //TODO recuperar el ultimo PESO de Firebase y compararlo con el nuevo
                   double miVariacion = 0;
 
-                  //Creamos  el IMC
-                  double miImc = 20.9;
+
 
                   //Creamos las notas
                   String miNotas = "";
@@ -108,6 +107,8 @@ public class GestionPeso implements View.OnClickListener {
                   //Cogemos el valor del Peso
                   double miValor = numberpickerKilos.getValue()+(numberPickerGramos.getValue()*0.1);
 
+                //Creamos  el IMC
+                double miImc = calcularIMC(ActivityDashboard.ultimoUsuario,miValor);
 
 
 
@@ -159,14 +160,14 @@ public class GestionPeso implements View.OnClickListener {
     }
 
 
-    public double calcularIMC(Usuario2 usuario, Peso2 peso) {
+    public double calcularIMC(Usuario2 usuario, double peso) {
         // TODO  recibir los datos del Firebase sobre el usuario, comprobar que la division de double entre int no da problemas
         //Clase Usuario altura en centimetros
         //Clase Peso valor en Kilos
         double imc;
 
         //La formula es  imc= val/(alt*alt)
-        imc = peso.getValor()/(usuario.getAltura()*usuario.getAltura());
+        imc = peso/(usuario.getAltura()*usuario.getAltura());
 
 
 

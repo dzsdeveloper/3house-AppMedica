@@ -28,10 +28,16 @@ import static com.a3house.appmedica.appmedica.PreferenceHelper.logOutUser;
 public class ActivityDashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static Usuario2 ultimoUsuario;
+    public static Peso2 ultimoPeso;
+    private GestionFirebase gf = new GestionFirebase();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        gf.recibirUsuario();
+        gf.recibirPeso();
 
         //Implementamos Butterknife
         ButterKnife.bind(this);
@@ -79,6 +85,7 @@ public class ActivityDashboard extends AppCompatActivity
         btnPesoActual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                actualizar();
                 Snackbar.make(view, "¡Enhorabuena! Cada día estás más cerca de tu peso ideal :) ", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -92,6 +99,7 @@ public class ActivityDashboard extends AppCompatActivity
             public void onClick(View view) {
                 GestionPeso gp = new GestionPeso();
                 gp.introducirPesoshowDialog(ActivityDashboard.this ,"Introduce tu peso");
+
             }
         });
 
@@ -176,5 +184,18 @@ public class ActivityDashboard extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void actualizar(){
+        Button btnPesoActual = (Button) findViewById(R.id.btnPesoActual);
+        btnPesoActual.setText(Double.toString(ultimoPeso.getValor()));
+    }
+
+    public static void recibirUnPeso(Peso2 peso){
+        ActivityDashboard.ultimoPeso = peso;
+    }
+
+    public static void recibirUnUsuario(Usuario2 usuario){
+        ActivityDashboard.ultimoUsuario = usuario;
     }
 }

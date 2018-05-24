@@ -70,6 +70,7 @@ public class ActivityListaPesos extends AppCompatActivity {
         });
     }
 
+    // Botón volver para finalizar Activity
     public void volver (View v){
         this.finish();
     }

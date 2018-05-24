@@ -101,9 +101,8 @@ public class GestionFirebase {
         return p;
     }
 
-    public Peso2 recibirPeso(){
+    public void recibirPeso(){
         final List<Peso2> lstPeso = new ArrayList<>();
-        Peso2 p;
         crearReferencia().child("pesos").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -113,13 +112,12 @@ public class GestionFirebase {
                     Peso2 p = new Peso2((String) hm.get("fecha"),Integer.parseInt(String.valueOf(hm.get("variacion"))),Double.parseDouble(String.valueOf(hm.get("imc"))),(String) hm.get("notas"),Double.parseDouble(String.valueOf(hm.get("valor"))) );
                     lstPeso.add(p);
                 }
+                ActivityDashboard.recibirUnPeso(lstPeso.get(lstPeso.size()-1));
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-        p = lstPeso.get(lstPeso.size()-1);
-        return p;
     }
 
 
@@ -163,9 +161,8 @@ public class GestionFirebase {
         return u;
     }
 
-    public Usuario2 recibirUsuario(){
+    public void recibirUsuario(){
         final List<Usuario2> lstUser = new ArrayList<>();
-        Usuario2 u;
         crearReferencia().child("perfil").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -177,13 +174,12 @@ public class GestionFirebase {
                             Integer.parseInt(String.valueOf(hm.get("altura"))),(String) hm.get("sexo"));
                     lstUser.add(user);
                 }
+                ActivityDashboard.recibirUnUsuario(lstUser.get(lstUser.size()-1));
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-        u = lstUser.get(lstUser.size()-1);
-        return u;
     }
 
     public List<Usuario2> recibirUsuarioHistorico(final List<Usuario2> lstUser){
