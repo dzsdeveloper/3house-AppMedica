@@ -4,13 +4,26 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -31,20 +44,13 @@ public class GestionPeso implements View.OnClickListener {
 
     public void introducirPesoshowDialog(final Activity activity, String msg){
 
-        NumberPicker numberpickerKilos,numberPickerGramos;
+        final NumberPicker numberpickerKilos,numberPickerGramos;
 
         final Dialog dialog = new Dialog(activity);
         //dialog.requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.cuadro_dialogo_plantilla2);
         ///dialog.setTitle();
-
-
-
-
-
-
-
 
         numberpickerKilos = (NumberPicker)dialog.findViewById(R.id.numberPickerKilos);
         numberPickerGramos = (NumberPicker)dialog.findViewById(R.id.numberPickerGramos);
@@ -58,11 +64,6 @@ public class GestionPeso implements View.OnClickListener {
         numberPickerGramos.setMinValue(0);
 
         numberPickerGramos.setMaxValue(9);
-
-
-
-
-
 
 
 
@@ -83,9 +84,39 @@ public class GestionPeso implements View.OnClickListener {
         //Boton que realiza la accion de guardar
         Button dialogButton = (Button) dialog.findViewById(R.id.bt_guardar);
         dialogButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 //TODO GUARDAR LA INFO EN LA BASE DE DATOS;
+                final GestionFirebase gf = new GestionFirebase();
+
+                //Creamos el calendario del textview(de String a Calendar)
+                ClaseAuxiliar miaux = new ClaseAuxiliar();
+                Calendar miCalendario =new GregorianCalendar();
+                miCalendario=(miaux.pasarAcalendario(etFechaElegir.getText().toString()));
+
+                //Creamos la variacion de Peso con respecto a la ultima medicion
+                //TODO recuperar el ultimo PESO de Firebase y compararlo con el nuevo
+                  double miVariacion = 0;
+
+                  //Creamos  el IMC
+                  double miImc = 20.9;
+
+                  //Creamos las notas
+                  String miNotas = "";
+
+                  //Cogemos el valor del Peso
+                  double miValor = numberpickerKilos.getValue()+(numberPickerGramos.getValue()*0.1);
+
+
+
+
+
+                  //Enviamos el nuevo Peso al FireBase
+                  Peso nuevoPeso = new Peso(miCalendario,miVariacion,miImc,miNotas,miValor);
+                  gf.enviarDatosPeso(nuevoPeso);
+                  dialog.dismiss();
+
 
 
 
@@ -128,7 +159,7 @@ public class GestionPeso implements View.OnClickListener {
     }
 
 
-    public double calcularIMC(Usuario usuario, Peso peso) {
+    public double calcularIMC(Usuario2 usuario, Peso2 peso) {
         // TODO  recibir los datos del Firebase sobre el usuario, comprobar que la division de double entre int no da problemas
         //Clase Usuario altura en centimetros
         //Clase Peso valor en Kilos
