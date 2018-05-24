@@ -17,7 +17,9 @@ import java.io.PrintStream;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.a3house.appmedica.appmedica.PreferenceHelper.getAlturaUsuario;
 import static com.a3house.appmedica.appmedica.PreferenceHelper.getName;
+import static com.a3house.appmedica.appmedica.PreferenceHelper.getSexoUsuario;
 
 public class MainActivity extends AppCompatActivity {
 
