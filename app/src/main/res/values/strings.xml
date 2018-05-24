@@ -21,11 +21,19 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_logout">Desconectarse</string>
+
+    <!--Strings Botones -->
+    <string name="btnModificar">MODIFICAR</string>
     <string name="btnBascula">INTRODUCIR PESO</string>
     <string name="pesoActualNull"> - - </string>
     <string name="IMCActualNull"> - - </string>
     <string name="labelPeso">Peso Actual</string>
     <string name="labelIMC">Cálculo IMC</string>
+    <string name="guardarVisita">GUARDAR VISITA</string>
+
+    <!--Strings Main -->
+    <string name="nuevo_usuario">NUEVO USUARIO</string>
+    <string name="usuario_registrado">YA ESTOY REGISTRADO</string>
 
     <!--Strings Nueva visita -->
     <string name="doctor1">Dr. Mercader</string>
