@@ -23,8 +23,9 @@
 
             <TextView
                 android:id="@+id/tvLabelPeso"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="@string/labelPeso"
                 android:textAppearance="@android:style/TextAppearance.Material.Medium" />
@@ -34,7 +35,9 @@
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
+                android:background="@drawable/bordes_redondos"
                 android:backgroundTint="@color/colorPrimary"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
         </LinearLayout>
@@ -67,6 +70,7 @@
                 android:id="@+id/tvLabelImc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="@string/labelIMC"
                 android:textAppearance="@android:style/TextAppearance.Material.Medium" />
@@ -76,7 +80,9 @@
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
+                android:background="@drawable/bordes_redondos"
                 android:backgroundTint="@color/colorPrimary"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
 

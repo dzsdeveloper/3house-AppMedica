@@ -33,20 +33,22 @@
         android:id="@+id/btnBasculaText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="58dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="430dp"
-        android:text="@string/btnBascula" />
+        android:text="@string/btnBascula"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textSize="17sp"
+        android:textStyle="bold" />
 
     <ImageButton
         android:id="@+id/btnBascula"
         android:layout_width="300dp"
         android:layout_height="140dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="400dp"
         android:cropToPadding="false"
-        android:scaleType="fitEnd"
-        app:srcCompat="@drawable/escala"
         android:drawablePadding="8dp"
-        />
+        android:scaleType="fitEnd"
+        app:srcCompat="@drawable/escala" />
 
 </android.support.design.widget.CoordinatorLayout>
