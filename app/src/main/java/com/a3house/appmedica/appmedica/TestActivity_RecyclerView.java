@@ -91,6 +91,17 @@ public class TestActivity_RecyclerView extends AppCompatActivity {
     public void verP(View v){
         //Implementar Peso
         rv.setAdapter(adpP);
+        gf.crearReferencia().child("perfil-peso/altura").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int h = Integer.parseInt(dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         gf.crearReferencia().child("pesos").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
