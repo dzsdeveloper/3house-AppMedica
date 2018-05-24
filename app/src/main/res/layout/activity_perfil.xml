@@ -13,9 +13,12 @@
 
         <ImageView
             android:id="@+id/imageLogo"
+            android:tint="@color/colorPrimary"
             android:layout_width="match_parent"
-            android:layout_height="147dp"
-            app:srcCompat="@drawable/cardiograma" />
+            android:layout_height="120dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/usuario" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_perfil"

@@ -19,28 +19,34 @@ public class ActivityPerfil extends AppCompatActivity {
     private List<Usuario2> lstUser = new ArrayList<>();
     private AdapterUsuario adpU = new AdapterUsuario(lstUser);
     private GestionFirebase gf = new GestionFirebase();
-    private Usuario2 usr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+        //Implementacion RecyclerView para PerfilActivity
         rv = (RecyclerView) findViewById(R.id.recycler_perfil);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adpU);
+        //Obtener el ultimo elemento de perfil del Firebase
         gf.crearReferencia().child("perfil").limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 lstUser.removeAll(lstUser);
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    //Obtencion de valores
                     HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    String s = "";
+                    if (((String) hm.get("sexo")).equals("H"))
+                        s="Hombre";
+                    if (((String) hm.get("sexo")).equals("M"))
+                        s="Mujer";
+                    //Creacion del objeto Usuario
                     Usuario2 user = new Usuario2((String) hm.get("nombre"),
                             (String) hm.get("apellidos"),
-                            Integer.parseInt(String.valueOf(hm.get("altura"))), (String) hm.get("sexo"));
+                            Integer.parseInt(String.valueOf(hm.get("altura"))), s);
                     lstUser.add(user);
-                    usr = user;
                 }
-                //int h = usr.getAltura();
                 adpU.notifyDataSetChanged();
             }
 
@@ -49,6 +55,5 @@ public class ActivityPerfil extends AppCompatActivity {
 
             }
         });
-        //int h = usr.getAltura();                                                                      }
     }
 }
