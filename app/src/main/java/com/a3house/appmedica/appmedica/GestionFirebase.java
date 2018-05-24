@@ -19,7 +19,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.a3house.appmedica.appmedica.PreferenceHelper.setAlturaUsuario;
 import static com.a3house.appmedica.appmedica.PreferenceHelper.setName;
+import static com.a3house.appmedica.appmedica.PreferenceHelper.setSexoUsuario;
 
 /**
  *
@@ -53,9 +55,14 @@ public class GestionFirebase {
         crearReferencia().child("altura").setValue(new Usuario2(u).getAltura());
         //Guardamos el valor de sexo en un child especifico
         crearReferencia().child("sexo").setValue(new Usuario2(u).getSexo());
-        //Guardamos el nombre del usuario en SharedPreferences
+
+        //Guardamos los datos del usuario en SharedPreferences
         String userName = u.getNombre();
         setName(userName);
+        String userAltura = String.valueOf(u.getAltura());
+        setAlturaUsuario(userAltura);
+        String userSexo = String.valueOf(u.getSexo());
+        setSexoUsuario(userSexo);
     }
 
     public void enviarDatosVisita(Visita v) {
