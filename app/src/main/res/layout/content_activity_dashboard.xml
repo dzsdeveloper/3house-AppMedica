@@ -36,7 +36,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="@string/pesoActualNull"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
         </LinearLayout>
 
@@ -79,7 +78,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="@string/IMCActualNull"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
 
         </LinearLayout>

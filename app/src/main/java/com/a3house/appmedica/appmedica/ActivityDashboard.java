@@ -51,16 +51,18 @@ public class ActivityDashboard extends AppCompatActivity
 
         //Recuperamos el boton donde se muestra el Peso Actual
         Button btnPesoActual = (Button) findViewById(R.id.btnPesoActual);
-        // if (pesoRecuperado != null){
-        //btnPesoActual.setText(String.ValueOf(pesoRecuperado));}
+        double ultimoPeso = 0;
+        String uP = String.valueOf(ultimoPeso);
+        btnPesoActual.setText(uP);
 
         //Recuperamos el boton donde se muestra el IMC Actual
         Button btnIMCActual = (Button) findViewById(R.id.btnIMCActual);
-        // if (imcRecuperado != null){
-        // btnIMCActual.setText(String.ValueOf(imcRecuperado));}
+        double ultimoIMC = 0;
+        String uIMC = String.valueOf(ultimoIMC);
+        btnIMCActual.setText(uIMC);
 
         //Recuperamos el resultado de la clasificacionIMC
-        //String resultadoEscalaIMC =clasificacionIMC(pesoRecuperado);
+        //String resultadoEscalaIMC = clasificacionIMC(ultimoPeso);
 
         //Creamos un escuchador al hacer click sobre el IMC para mostrarlo
         btnIMCActual.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +74,7 @@ public class ActivityDashboard extends AppCompatActivity
         });
 
         //Creamos un escuchador al hacer click sobre el Peso Actual
-        //muestra un mensaje motivador
+        //que muestra un mensaje motivador
 
         btnPesoActual.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +85,6 @@ public class ActivityDashboard extends AppCompatActivity
         });
 
         //Botón con icono bascula para introducir el peso
-        // si el usuario ya ha introducido el peso sale un mensaje
 
         ImageButton botonBascula = (ImageButton) findViewById(R.id.btnBascula);
         botonBascula.setOnClickListener(new View.OnClickListener() {
@@ -162,7 +163,8 @@ public class ActivityDashboard extends AppCompatActivity
         } else if (id == R.id.mi_perfil) {
 
         } else if (id == R.id.lista_pesos) {
-
+            Intent lanzadorListaPesos = new Intent(this, ActivityListaPesos.class);
+            this.startActivity(lanzadorListaPesos);
         } else if (id == R.id.nueva_visita) {
             Intent lanzadorNuevaVisita = new Intent(this, ActivityNuevaVisita.class);
             this.startActivity(lanzadorNuevaVisita);
