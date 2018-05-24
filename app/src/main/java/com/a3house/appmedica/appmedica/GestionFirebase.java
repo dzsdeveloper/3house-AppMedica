@@ -91,6 +91,29 @@ public class GestionFirebase {
         p = lstPeso.get(lstPeso.size()-1);
         return p;
     }
+
+    public Peso2 recibirPeso(){
+        final List<Peso2> lstPeso = new ArrayList<>();
+        Peso2 p;
+        crearReferencia().child("pesos").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstPeso.removeAll(lstPeso);
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    Peso2 p = new Peso2((String) hm.get("fecha"),Integer.parseInt(String.valueOf(hm.get("variacion"))),Double.parseDouble(String.valueOf(hm.get("imc"))),(String) hm.get("notas"),Double.parseDouble(String.valueOf(hm.get("valor"))) );
+                    lstPeso.add(p);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+        p = lstPeso.get(lstPeso.size()-1);
+        return p;
+    }
+
+
     public List<Peso2> recibirPesoHistorico(final List<Peso2> lstPeso){
         Peso2 p;
         crearReferencia().child("pesos").addValueEventListener(new ValueEventListener() {
@@ -130,6 +153,30 @@ public class GestionFirebase {
         u = lstUser.get(lstUser.size()-1);
         return u;
     }
+
+    public Usuario2 recibirUsuario(){
+        final List<Usuario2> lstUser = new ArrayList<>();
+        Usuario2 u;
+        crearReferencia().child("perfil").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstUser.removeAll(lstUser);
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    Usuario2 user = new Usuario2((String) hm.get("nombre"),
+                            (String) hm.get("apellidos"),
+                            Integer.parseInt(String.valueOf(hm.get("altura"))),(String) hm.get("sexo"));
+                    lstUser.add(user);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+        u = lstUser.get(lstUser.size()-1);
+        return u;
+    }
+
     public List<Usuario2> recibirUsuarioHistorico(final List<Usuario2> lstUser){
         Usuario2 u;
         crearReferencia().child("perfil").addValueEventListener(new ValueEventListener() {
