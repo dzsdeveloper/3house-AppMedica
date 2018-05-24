@@ -47,24 +47,26 @@ public class ActivityDashboard extends AppCompatActivity
         bienvenida.setGravity(Gravity.CENTER, 0,0);
         bienvenida.show();
 
-        //Recuperamos el último peso subido al Firebase
-
+        //Recuperamos el último peso y el último IMC que se ha enviado a Firebase
 
         //Recuperamos el boton donde se muestra el Peso Actual
         Button btnPesoActual = (Button) findViewById(R.id.btnPesoActual);
-        btnPesoActual.setText("68");
+        // if (pesoRecuperado != null){
+        //btnPesoActual.setText(String.ValueOf(pesoRecuperado));}
 
         //Recuperamos el boton donde se muestra el IMC Actual
         Button btnIMCActual = (Button) findViewById(R.id.btnIMCActual);
-        btnIMCActual.setText("22");
+        // if (imcRecuperado != null){
+        // btnIMCActual.setText(String.ValueOf(imcRecuperado));}
 
-        //Creamos un escuchador al hacer click sobre el IMC
-        //que mostrará más info sobre el IMC
+        //Recuperamos el resultado de la clasificacionIMC
+        //String resultadoEscalaIMC =clasificacionIMC(pesoRecuperado);
 
+        //Creamos un escuchador al hacer click sobre el IMC para mostrarlo
         btnIMCActual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Tu IMC (índice de masa corporal) corresponde al de una complexión delgada", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Tu IMC (índice de masa corporal) corresponde en la escala a", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                         }
         });

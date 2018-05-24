@@ -29,7 +29,13 @@
     <string name="tvValor">TextView</string>
     <string name="tvVariacion">TextView</string>
 
+
+    <!--Strings Nueva visita -->
     <string name="btnBascula">INTRODUCIR PESO</string>
+    <string name="pesoActualNull"> - - </string>
+    <string name="IMCActualNull"> - - </string>
+    <string name="labelPeso">Peso Actual</string>
+    <string name="labelIMC">CÁLCULO IMC</string>
 
     <!--Strings Nueva visita -->
     <string name="doctor1">Dr. Mercader</string>
