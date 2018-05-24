@@ -28,7 +28,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ActivityRegistro" />
         <activity android:name=".TestActivity_RecyclerView" />
-        <activity android:name=".ActivityListaVisitas"></activity>
+        <activity android:name=".ActivityListaVisitas" />
+        <activity android:name=".ActivityListaPesos"></activity>
     </application>
 
 </manifest>
