@@ -35,7 +35,7 @@
     <string name="pesoActualNull"> - - </string>
     <string name="IMCActualNull"> - - </string>
     <string name="labelPeso">Peso Actual</string>
-    <string name="labelIMC">CÁLCULO IMC</string>
+    <string name="labelIMC">Cálculo IMC</string>
 
     <!--Strings Nueva visita -->
     <string name="doctor1">Dr. Mercader</string>
