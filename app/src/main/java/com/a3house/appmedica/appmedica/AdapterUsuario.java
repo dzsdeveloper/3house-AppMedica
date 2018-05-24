@@ -10,21 +10,13 @@ import java.util.List;
 
 class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.AdapViewHolder> {
         List<Usuario2> lstUser = new ArrayList<>();
-        List<Peso2> lstPeso = new ArrayList<>();
-        List<Visita2> lstVst = new ArrayList<>();
-        List<String> lstIds = new ArrayList<>();
 
-        /*public Adapter(List<Usuario2> lstUser,List<Peso2> lstPeso,List<Visita2> lstVst) {
-            this.lstUser = lstUser;
-            this.lstPeso = lstPeso;
-            this.lstVst = lstVst;
-        }*/
     public AdapterUsuario(List<Usuario2> lstUser) {
         this.lstUser = lstUser;
     }
         @Override
         public AdapViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_recycler,parent,false);
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.perfil_recycler,parent,false);
             AdapViewHolder holder = new AdapViewHolder(v);
             return holder;
         }
@@ -49,10 +41,10 @@ class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.AdapViewHolder>
 
             public AdapViewHolder(View itemView) {
                 super(itemView);
-                tvnombre = (TextView) itemView.findViewById(R.id.tvNombre);
-                tvaltura = (TextView) itemView.findViewById(R.id.tvAlto);
-                tvapellido = (TextView) itemView.findViewById(R.id.tvApellido);
-                tvsexo = (TextView) itemView.findViewById(R.id.tvSexo);
+                tvnombre = (TextView) itemView.findViewById(R.id.tvNombrePerfil);
+                tvaltura = (TextView) itemView.findViewById(R.id.tvAlturaPerfil);
+                tvapellido = (TextView) itemView.findViewById(R.id.tvApellidosPerfil);
+                tvsexo = (TextView) itemView.findViewById(R.id.tvSexoPerfil);
             }
         }
     }

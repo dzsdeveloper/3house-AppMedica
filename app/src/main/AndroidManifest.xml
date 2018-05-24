@@ -29,7 +29,8 @@
         <activity android:name=".ActivityRegistro" />
         <activity android:name=".TestActivity_RecyclerView" />
         <activity android:name=".ActivityListaVisitas" />
-        <activity android:name=".ActivityListaPesos"></activity>
+        <activity android:name=".ActivityListaPesos" />
+        <activity android:name=".ActivityPerfil"></activity>
     </application>
 
 </manifest>

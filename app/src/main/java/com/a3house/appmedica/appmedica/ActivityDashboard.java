@@ -161,7 +161,8 @@ public class ActivityDashboard extends AppCompatActivity
             Intent lanzadorDashboard = new Intent(this, ActivityDashboard.class);
             this.startActivity(lanzadorDashboard);
         } else if (id == R.id.mi_perfil) {
-
+            Intent lanzadorDashboard = new Intent(this, ActivityPerfil.class);
+            this.startActivity(lanzadorDashboard);
         } else if (id == R.id.lista_pesos) {
             Intent lanzadorListaPesos = new Intent(this, ActivityListaPesos.class);
             this.startActivity(lanzadorListaPesos);
