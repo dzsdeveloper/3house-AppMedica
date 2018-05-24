@@ -1,13 +1,20 @@
 package com.a3house.appmedica.appmedica;
 
+import android.annotation.TargetApi;
 import android.app.Application;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
+import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.widget.DatePicker;
 import android.widget.EditText;
+
+
+import java.text.ParseException;
 import java.util.Date;
 
 import java.util.Calendar;
@@ -81,6 +88,30 @@ public class ClaseAuxiliar {
 
 
         return hoy;
+    }
+
+    @TargetApi(Build.VERSION_CODES.N)
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public Calendar pasarAcalendario(String mifecha){
+
+        //Use .parse() method to convert the String to Date object:
+
+        Date dateString = null;
+        try {
+            dateString = new SimpleDateFormat("dd/MM/yyyy").parse(mifecha);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        //getInstance() will create an instance of one of the Subclass of the abstract Calendar class:
+
+        Calendar cal = Calendar.getInstance();
+
+        //setTime() will take a Date object:
+
+        cal.setTime(dateString);
+
+        return cal;
     }
 
 }
