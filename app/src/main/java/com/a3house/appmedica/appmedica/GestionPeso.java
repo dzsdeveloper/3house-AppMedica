@@ -179,6 +179,7 @@ public class GestionPeso implements View.OnClickListener {
      * imc = el índice de masa corporal
      * cad = mensaje que nos indica nuestra clasificacion de peso
      */
+
     public String clasificacionIMC(Peso peso) {
 
         String cad="";
@@ -201,7 +202,6 @@ public class GestionPeso implements View.OnClickListener {
         }
 
         return cad;
-
     }
 
     /**
