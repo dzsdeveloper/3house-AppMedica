@@ -56,6 +56,7 @@ public class GestionFirebase {
         crearReferencia().child("perfil-peso/altura").setValue(new Usuario2(u).getAltura());
         //Guardamos el valor de sexo en un child especifico
         crearReferencia().child("sexo").setValue(new Usuario2(u).getSexo());
+        crearReferencia().child("perfil-peso/sexo").setValue(new Usuario2(u).getSexo());
 
         //Guardamos los datos del usuario en SharedPreferences
         String userName = u.getNombre();
