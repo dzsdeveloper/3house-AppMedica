@@ -40,10 +40,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
+                android:autoSizeTextType="uniform"
                 android:background="@drawable/bordes_redondos"
                 android:backgroundTint="@color/colorPrimary"
                 android:ellipsize="end"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textSize="36sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -90,7 +94,10 @@
                 android:background="@drawable/bordes_redondos"
                 android:backgroundTint="@color/colorPrimary"
                 android:ellipsize="end"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textSize="36sp" />
 
         </LinearLayout>
     </LinearLayout>
