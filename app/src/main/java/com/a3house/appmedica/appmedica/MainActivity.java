@@ -26,10 +26,6 @@ public class MainActivity extends AppCompatActivity {
     //Creamos una variable global estatica para acceder a Shared Preferences
     public static SharedPreferences preferences;
 
-    //Creamos variables privadas para el ProgressBar
-    private int progressStatus = 0;
-    private Handler handler = new Handler();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         //Botones Login y Registro
-
         final Button botonAcceder = findViewById(R.id.btnAcceder);
         botonAcceder.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -77,7 +72,5 @@ public class MainActivity extends AppCompatActivity {
         Intent lanzadorDashboard = new Intent(this, ActivityDashboard.class);
         this.startActivity(lanzadorDashboard);
     }
-
-
 
 }
