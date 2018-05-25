@@ -48,9 +48,11 @@ public class ActivityListaPesos extends AppCompatActivity {
                 gf.crearReferencia().child("altura").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        int h = Integer.parseInt(dataSnapshot.getValue().toString());
-                        //Calculo del IMC
-                        System.out.println("El IMC es: " + (var3 + h));
+                        if (dataSnapshot.getValue() != null) {
+                            int h = Integer.parseInt(dataSnapshot.getValue().toString());
+                            //Calculo del IMC
+                            System.out.println("El IMC es: " + (var3 + h));
+                        }
                     }
 
                     @Override
