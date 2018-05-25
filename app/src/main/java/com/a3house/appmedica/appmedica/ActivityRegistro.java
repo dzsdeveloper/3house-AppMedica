@@ -30,7 +30,7 @@ public class ActivityRegistro extends AppCompatActivity {
         RadioButton radiobutton = findViewById(radioButtonId);
         if (radiobutton.getText().toString().equals("Hombre"))
             sexo='H';
-        else
+        if (radiobutton.getText().toString().equals("Mujer"))
             sexo='M';
         Usuario usr = new Usuario(nombre.getText().toString(),apellidos.getText().toString(),Integer.parseInt(altura.getText().toString()),sexo);
         gf.enviarDatosUsuario(usr);
