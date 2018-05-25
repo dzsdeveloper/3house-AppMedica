@@ -67,15 +67,9 @@ public class ActivityDashboard extends AppCompatActivity
 
         //Recuperamos el boton donde se muestra el Peso Actual
         btnPesoActual = (Button) findViewById(R.id.btnPesoActual);
-        /*double ultimoPeso = 0;
-        String uP = String.valueOf(ultimoPeso);
-        btnPesoActual.setText(uP);*/
 
         //Recuperamos el boton donde se muestra el IMC Actual
         btnIMCActual = findViewById(R.id.btnIMCActual);
-        /*double ultimoIMC = 0;
-        String uIMC = String.valueOf(ultimoIMC);
-        btnIMCActual.setText(uIMC);*/
 
         //Recuperamos el resultado de la clasificacionIMC
         //String resultadoEscalaIMC = clasificacionIMC(ultimoPeso);
