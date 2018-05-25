@@ -116,7 +116,11 @@ public class GestionPeso implements View.OnClickListener {
                   //Enviamos el nuevo Peso al FireBase
                   Peso nuevoPeso = new Peso(miCalendario,miVariacion,miImc,miNotas,miValor);
                   gf.enviarDatosPeso(nuevoPeso);
-                  dialog.dismiss();
+                  ActivityDashboard.btnPesoActual.setText(String.valueOf(miValor));
+                  ActivityDashboard.btnIMCActual.setText(String.format("%.1f", miImc));
+
+
+                dialog.dismiss();
 
 
 
@@ -167,7 +171,7 @@ public class GestionPeso implements View.OnClickListener {
         double imc;
 
         //La formula es  imc= val/(alt*alt)
-        imc = peso/(usuario.getAltura()*usuario.getAltura());
+        imc = peso/((usuario.getAltura()*0.01) * (usuario.getAltura()*0.01));
 
 
 
@@ -181,22 +185,22 @@ public class GestionPeso implements View.OnClickListener {
      * cad = mensaje que nos indica nuestra clasificacion de peso
      */
 
-    public String clasificacionIMC(Peso peso) {
+    public String clasificacionIMC(Double imc) {
 
         String cad="";
-        if(peso.getImc()<16.00){
+        if(imc<16.00){
             cad="Infrapeso: Delgadez Severa";
-        }else if(peso.getImc()<=16.00 || peso.getImc()<=16.99){
+        }else if(imc<=16.00 || imc<=16.99){
             cad="Infrapeso: Delgadez moderada";
-        }else if(peso.getImc()<=17.00 ||peso.getImc()<=18.49){
+        }else if(imc<=17.00 ||imc<=18.49){
             cad="Infrapeso: Delgadez aceptable";
-        }else if(peso.getImc()<=18.50 || peso.getImc()<=24.99){
+        }else if(imc<=18.50 || imc<=24.99){
             cad="Peso Normal";
-        }else if(peso.getImc()<=25.00 || peso.getImc()<=29.99){
+        }else if(imc<=25.00 || imc<=29.99){
             cad="Sobrepeso: grado I";
-        }else if(peso.getImc()<=30.00 || peso.getImc()<=34.99){
+        }else if(imc<=30.00 || imc<=34.99){
             cad="Sobrepeso: grado II";
-        }else if(peso.getImc()<=35.00 || peso.getImc() <=40.00){
+        }else if(imc<=35.00 || imc <=40.00){
             cad="Sobrepeso: grado III";
         }else{
             cad="no existe clasificacion";
@@ -232,7 +236,7 @@ public class GestionPeso implements View.OnClickListener {
      * La funcion recibe la altura registrada en Usuario y el valor registrado en Peso
      * Realiza el calculo mediante la formula de Lorentz
      */
-    public double calcularPesoIdeal(Usuario usuario) {
+    public double calcularPesoIdeal(Usuario2 usuario) {
         // TODO implement here
         //La fórmula de Lorentz
         //Peso ideal masculino = estatura (en cm) – 100 – [(estatura en cm – 150) / 4]
@@ -242,7 +246,7 @@ public class GestionPeso implements View.OnClickListener {
         double idealFemenino = usuario.getAltura() - 100 -((usuario.getAltura() -150)/4);
 
         //Si el usuario es un hombre en el atributo sexo estara marcado como 'H'
-        if(usuario.getSexo()=='H'){return idealMasculino;}
+        if(usuario.getSexo()=="H"){return idealMasculino;}
         else{return idealFemenino;}
 
     }
