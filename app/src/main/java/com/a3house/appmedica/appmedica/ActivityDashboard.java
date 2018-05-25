@@ -46,6 +46,7 @@ public class ActivityDashboard extends AppCompatActivity
         setContentView(R.layout.activity_dashboard);
         gf.recibirUsuario();
         gf.recibirPeso();
+        final GestionPeso gestionPeso = new GestionPeso();
 
 
         //Implementamos Butterknife
@@ -83,7 +84,8 @@ public class ActivityDashboard extends AppCompatActivity
         btnIMCActual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Tu IMC (índice de masa corporal) corresponde en la escala a", Snackbar.LENGTH_LONG)
+                String cad = gestionPeso.clasificacionIMC(Double.valueOf(btnIMCActual.getText().toString()));
+                Snackbar.make(view, "Tu IMC (índice de masa corporal) corresponde en la escala a "+cad, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                         }
         });
@@ -94,7 +96,8 @@ public class ActivityDashboard extends AppCompatActivity
         btnPesoActual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "¡Enhorabuena! Cada día estás más cerca de tu peso ideal :) ", Snackbar.LENGTH_LONG)
+                double mipesoideal = gestionPeso.calcularPesoIdeal(ultimoUsuario);
+                Snackbar.make(view, "Tu peso ideal es "+mipesoideal+" Kg. Cada día estás más cerca de tu objetivo ;)", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
