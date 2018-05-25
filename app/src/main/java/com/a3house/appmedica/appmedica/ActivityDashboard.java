@@ -178,8 +178,10 @@ public class ActivityDashboard extends AppCompatActivity
         if (id == R.id.menu_principal) {
             // Handle the camera action
             //boton del menu para volver al Dashboard
-            Intent lanzadorDashboard = new Intent(this, ActivityDashboard.class);
-            this.startActivity(lanzadorDashboard);
+            if(this.getClass() != ActivityDashboard.class){
+                Intent lanzadorDashboard = new Intent(this, ActivityDashboard.class);
+                this.startActivity(lanzadorDashboard);
+            }
         } else if (id == R.id.mi_perfil) {
             Intent lanzadorDashboard = new Intent(this, ActivityPerfil.class);
             this.startActivity(lanzadorDashboard);
