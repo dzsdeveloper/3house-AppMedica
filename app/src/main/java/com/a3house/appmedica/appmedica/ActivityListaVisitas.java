@@ -54,7 +54,7 @@ public class ActivityListaVisitas extends AppCompatActivity {
     public void volver (View v){ this.finish();
     }
 
-    public void solicitarNuevaVisita(){
+    public void solicitarNuevaVisita(View v){
         Intent lanzadorNuevaVisita = new Intent(this, ActivityNuevaVisita.class);
         this.startActivity(lanzadorNuevaVisita);
     }
