@@ -32,7 +32,8 @@
         <activity android:name=".ActivityListaPesos" />
         <activity android:name=".ActivityPerfil" />
         <activity android:name=".ActivityModificarPerfil" />
-        <activity android:name=".pruebaOriol"></activity>
+        <activity android:name=".pruebaOriol" />
+        <activity android:name=".ActivityEditPerfil"></activity>
     </application>
 
 </manifest>

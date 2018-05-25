@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityRegistro">
+    tools:context=".ActivityEditPerfil">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -12,8 +12,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/imageLogo"
+            android:tint="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/usuario" />
+
         <EditText
-            android:id="@+id/edtNombreMod"
+            android:id="@+id/edtEditNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:capitalize="words"
@@ -22,7 +31,7 @@
             android:inputType="textCapWords|textPersonName" />
 
         <EditText
-            android:id="@+id/edtApellidosMod"
+            android:id="@+id/edtEditApellidos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:capitalize="words"
@@ -36,7 +45,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/edtAlturaMod"
+                android:id="@+id/edtEditAltura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -54,14 +63,42 @@
 
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/edtSexo"
+        <RadioGroup
+            android:id="@+id/selectorSexoMP"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Sexo"
-            android:inputType="textPersonName" />
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <RadioButton
+                android:id="@+id/radioEditButtonH"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="Hombre" />
+
+            <RadioButton
+                android:id="@+id/radioEditButtonM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="Mujer" />
+
+        </RadioGroup>
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btnEnviar"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_margin="20dp"
+        android:layout_weight="1"
+        android:background="@android:color/darker_gray"
+        android:onClick="modificarPerfilEnvio2"
+        android:text="ENVIAR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="20dp" />
 </android.support.constraint.ConstraintLayout>

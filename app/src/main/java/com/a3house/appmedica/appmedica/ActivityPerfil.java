@@ -22,7 +22,39 @@ public class ActivityPerfil extends AppCompatActivity {
     private List<Usuario2> lstUser = new ArrayList<>();
     private AdapterUsuario adpU = new AdapterUsuario(lstUser);
     private GestionFirebase gf = new GestionFirebase();
-        Button btnModificar;
+    Button btnModificar;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        gf.crearReferencia().child("perfil").limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lstUser.removeAll(lstUser);
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    //Obtencion de valores
+                    HashMap<String, Object> hm = (HashMap<String, Object>) (snapshot.getValue());
+                    String s = "";
+                    if (((String) hm.get("sexo")).equals("H"))
+                        s="Hombre";
+                    if (((String) hm.get("sexo")).equals("M"))
+                        s="Mujer";
+                    //Creacion del objeto Usuario
+                    Usuario2 user = new Usuario2((String) hm.get("nombre"),
+                            (String) hm.get("apellidos"),
+                            Integer.parseInt(String.valueOf(hm.get("altura"))), s);
+                    lstUser.add(user);
+                }
+                adpU.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,9 +92,11 @@ public class ActivityPerfil extends AppCompatActivity {
             }
         });
     }
-
+    public void homePerfil(View v){
+        this.finish();
+    }
     public void modificar(View v){
-        Intent lanzadorDashboard = new Intent(this, ActivityModificarPerfil.class);
+        Intent lanzadorDashboard = new Intent(this, ActivityEditPerfil.class);
         this.startActivity(lanzadorDashboard);
     }
 }
