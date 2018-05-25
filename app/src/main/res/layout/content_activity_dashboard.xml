@@ -39,8 +39,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/bordes_redondos"
                 android:backgroundTint="@color/colorPrimary"
+                android:padding="10dp"
                 android:text="@string/pesoActualNull"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textSize="50sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -85,8 +87,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/bordes_redondos"
                 android:backgroundTint="@color/colorPrimary"
+                android:padding="10dp"
                 android:text="@string/IMCActualNull"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textSize="50sp" />
 
         </LinearLayout>
     </LinearLayout>
