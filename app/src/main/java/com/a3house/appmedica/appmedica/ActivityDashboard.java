@@ -2,7 +2,9 @@ package com.a3house.appmedica.appmedica;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.Gravity;
@@ -19,6 +21,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.Timer;
+import java.util.TimerTask;
+import android.os.Handler;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -31,6 +37,8 @@ public class ActivityDashboard extends AppCompatActivity
     public static Usuario2 ultimoUsuario;
     public static Peso2 ultimoPeso;
     private GestionFirebase gf = new GestionFirebase();
+    public static Button btnPesoActual;
+    public static Button btnIMCActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +46,7 @@ public class ActivityDashboard extends AppCompatActivity
         setContentView(R.layout.activity_dashboard);
         gf.recibirUsuario();
         gf.recibirPeso();
+
 
         //Implementamos Butterknife
         ButterKnife.bind(this);
@@ -56,16 +65,16 @@ public class ActivityDashboard extends AppCompatActivity
         //Recuperamos el último peso y el último IMC que se ha enviado a Firebase
 
         //Recuperamos el boton donde se muestra el Peso Actual
-        Button btnPesoActual = (Button) findViewById(R.id.btnPesoActual);
-        double ultimoPeso = 0;
+        btnPesoActual = (Button) findViewById(R.id.btnPesoActual);
+        /*double ultimoPeso = 0;
         String uP = String.valueOf(ultimoPeso);
-        btnPesoActual.setText(uP);
+        btnPesoActual.setText(uP);*/
 
         //Recuperamos el boton donde se muestra el IMC Actual
-        Button btnIMCActual = (Button) findViewById(R.id.btnIMCActual);
-        double ultimoIMC = 0;
+        btnIMCActual = findViewById(R.id.btnIMCActual);
+        /*double ultimoIMC = 0;
         String uIMC = String.valueOf(ultimoIMC);
-        btnIMCActual.setText(uIMC);
+        btnIMCActual.setText(uIMC);*/
 
         //Recuperamos el resultado de la clasificacionIMC
         //String resultadoEscalaIMC = clasificacionIMC(ultimoPeso);
@@ -85,7 +94,6 @@ public class ActivityDashboard extends AppCompatActivity
         btnPesoActual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                actualizar();
                 Snackbar.make(view, "¡Enhorabuena! Cada día estás más cerca de tu peso ideal :) ", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -122,6 +130,7 @@ public class ActivityDashboard extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        timer();
     }
 
     @Override
@@ -187,9 +196,30 @@ public class ActivityDashboard extends AppCompatActivity
         return true;
     }
 
-    public void actualizar(){
-        Button btnPesoActual = (Button) findViewById(R.id.btnPesoActual);
-        btnPesoActual.setText(Double.toString(ultimoPeso.getValor()));
+    public static Handler manejador = new Handler()
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            //Resuperaremos el contenido del mensaje del setvivio y lo escribiremos
+            //por pantalla.
+            String resultado = String.valueOf(msg.obj);
+            GestionPeso gp = new GestionPeso();
+            double imc = gp.calcularIMC(ultimoUsuario, Double.valueOf(resultado));
+            btnPesoActual.setText(resultado);
+            btnIMCActual.setText(String.format("%.1f", imc));
+        }
+    };
+
+    private void timer(){
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                if(ultimoPeso != null)
+                    ActivityDashboard.manejador.obtainMessage(0, 0, 0, ultimoPeso.getValor()).sendToTarget();
+            }
+        };
+        timer.schedule(task, 3000);
     }
 
     public static void recibirUnPeso(Peso2 peso){
