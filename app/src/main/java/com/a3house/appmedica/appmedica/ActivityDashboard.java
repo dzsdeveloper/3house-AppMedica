@@ -218,7 +218,7 @@ public class ActivityDashboard extends AppCompatActivity
                     ActivityDashboard.manejador.obtainMessage(0, 0, 0, ultimoPeso.getValor()).sendToTarget();
             }
         };
-        timer.schedule(task, 3000);
+        timer.schedule(task, 5000);
     }
 
     public static void recibirUnPeso(Peso2 peso){

@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
+                android:lines="1"
                 android:text="@string/labelPeso"
                 android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
@@ -59,7 +60,7 @@
             <Button
                 android:id="@+id/separador"
                 style="@android:style/Widget.Button"
-                android:layout_width="match_parent"
+                android:layout_width="35dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/background_light"
@@ -81,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
+                android:lines="1"
                 android:text="@string/labelIMC"
                 android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
