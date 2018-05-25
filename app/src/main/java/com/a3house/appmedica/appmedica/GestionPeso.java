@@ -116,7 +116,11 @@ public class GestionPeso implements View.OnClickListener {
                   //Enviamos el nuevo Peso al FireBase
                   Peso nuevoPeso = new Peso(miCalendario,miVariacion,miImc,miNotas,miValor);
                   gf.enviarDatosPeso(nuevoPeso);
-                  dialog.dismiss();
+                  ActivityDashboard.btnPesoActual.setText(String.valueOf(miValor));
+                  ActivityDashboard.btnIMCActual.setText(String.format("%.1f", miImc));
+
+
+                dialog.dismiss();
 
 
 
@@ -167,7 +171,7 @@ public class GestionPeso implements View.OnClickListener {
         double imc;
 
         //La formula es  imc= val/(alt*alt)
-        imc = peso/(usuario.getAltura()*usuario.getAltura());
+        imc = peso/((usuario.getAltura()*0.01) * (usuario.getAltura()*0.01));
 
 
 
