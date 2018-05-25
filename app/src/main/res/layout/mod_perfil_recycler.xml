@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityRegistro">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edtNombreMod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:capitalize="words"
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="textCapWords|textPersonName" />
+
+        <EditText
+            android:id="@+id/edtApellidosMod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:capitalize="words"
+            android:ems="10"
+            android:hint="Apellidos"
+            android:inputType="textCapWords" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edtAlturaMod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Altura"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/unidadMedida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autoText="false"
+                android:text="cms" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtSexo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Sexo"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -30,6 +30,8 @@
     <string name="labelPeso">Peso Actual</string>
     <string name="labelIMC">Cálculo IMC</string>
     <string name="guardarVisita">GUARDAR VISITA</string>
+    <string name="btnVolver">VOLVER AL MENU PRINCIPAL</string>
+    <string name="btnNuevaVisita">SOLICITAR NUEVA VISITA</string>
 
     <!--Strings Main -->
     <string name="nuevo_usuario">NUEVO USUARIO</string>
