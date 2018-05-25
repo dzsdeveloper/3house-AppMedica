@@ -52,12 +52,13 @@ public class GestionFirebase {
         //Guardamos el objeto Usuario
         crearReferencia().child(USUARIO_REFERENCE).push().setValue(new Usuario2(u));
         //Guardamos el valor de altura en un child especifico
-        crearReferencia().child("altura").setValue(new Usuario2(u).getAltura());
         crearReferencia().child("perfil-peso/altura").setValue(new Usuario2(u).getAltura());
         //Guardamos el valor de sexo en un child especifico
-        crearReferencia().child("sexo").setValue(new Usuario2(u).getSexo());
         crearReferencia().child("perfil-peso/sexo").setValue(new Usuario2(u).getSexo());
-
+        //Guardamos el valor de nombre en un child especifico
+        crearReferencia().child("perfil-peso/nombre").setValue(new Usuario2(u).getNombre());
+        //Guardamos el valor de apellidos en un child especifico
+        crearReferencia().child("perfil-peso/apellidos").setValue(new Usuario2(u).getApellidos());
         //Guardamos los datos del usuario en SharedPreferences
         String userName = u.getNombre();
         setName(userName);

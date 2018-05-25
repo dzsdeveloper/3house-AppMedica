@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:layout_marginBottom="8dp"
-        android:onClick="solicitarVisita"
+        android:onClick="solicitarNuevaVisita"
         android:text="@string/btnNuevaVisita"
         app:layout_constraintBottom_toTopOf="@+id/btnVolver"
         app:layout_constraintEnd_toEndOf="parent"

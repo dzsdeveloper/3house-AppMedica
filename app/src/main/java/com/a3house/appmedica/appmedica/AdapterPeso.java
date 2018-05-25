@@ -27,7 +27,7 @@ public class AdapterPeso extends RecyclerView.Adapter<AdapterPeso.AdapViewHolder
     public void onBindViewHolder(AdapViewHolder holder, int position) {
              Peso2 pes = lstPeso.get(position);
             holder.tvfechapeso.setText(pes.getFecha());
-            holder.tvimc.setText(String.valueOf(pes.getImc()));
+            holder.tvimc.setText(String.valueOf(String.format("%.1f", pes.getImc())));
             //holder.tvnotapeso.setText(pes.getNotas());
             holder.tvvalor.setText(String.valueOf(pes.getValor()));
             holder.tvvariacion.setText(String.valueOf(pes.getVariacion()));

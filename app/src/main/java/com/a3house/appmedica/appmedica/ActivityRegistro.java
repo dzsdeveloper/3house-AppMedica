@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class ActivityRegistro extends AppCompatActivity {
     EditText nombre, apellidos,altura;
     private RadioGroup rdSexo;

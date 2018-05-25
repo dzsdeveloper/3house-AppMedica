@@ -67,15 +67,9 @@ public class ActivityDashboard extends AppCompatActivity
 
         //Recuperamos el boton donde se muestra el Peso Actual
         btnPesoActual = (Button) findViewById(R.id.btnPesoActual);
-        /*double ultimoPeso = 0;
-        String uP = String.valueOf(ultimoPeso);
-        btnPesoActual.setText(uP);*/
 
         //Recuperamos el boton donde se muestra el IMC Actual
         btnIMCActual = findViewById(R.id.btnIMCActual);
-        /*double ultimoIMC = 0;
-        String uIMC = String.valueOf(ultimoIMC);
-        btnIMCActual.setText(uIMC);*/
 
         //Recuperamos el resultado de la clasificacionIMC
         //String resultadoEscalaIMC = clasificacionIMC(ultimoPeso);
@@ -178,8 +172,10 @@ public class ActivityDashboard extends AppCompatActivity
         if (id == R.id.menu_principal) {
             // Handle the camera action
             //boton del menu para volver al Dashboard
-            Intent lanzadorDashboard = new Intent(this, ActivityDashboard.class);
-            this.startActivity(lanzadorDashboard);
+            if(this.getClass() != ActivityDashboard.class){
+                Intent lanzadorDashboard = new Intent(this, ActivityDashboard.class);
+                this.startActivity(lanzadorDashboard);
+            }
         } else if (id == R.id.mi_perfil) {
             Intent lanzadorDashboard = new Intent(this, ActivityPerfil.class);
             this.startActivity(lanzadorDashboard);
