@@ -11,8 +11,11 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:baselineAligned="false"
         android:orientation="horizontal"
-        android:baselineAligned="false">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,6 +42,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bordes_redondos"
                 android:backgroundTint="@color/colorPrimary"
+                android:ellipsize="end"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
         </LinearLayout>
 
@@ -55,7 +59,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/background_light"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:visibility="invisible" />
 
         </LinearLayout>
 
@@ -84,10 +89,16 @@
                 android:layout_weight="1"
                 android:background="@drawable/bordes_redondos"
                 android:backgroundTint="@color/colorPrimary"
+                android:ellipsize="end"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
 
         </LinearLayout>
     </LinearLayout>
+
+    <android.support.constraint.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </android.support.constraint.ConstraintLayout>

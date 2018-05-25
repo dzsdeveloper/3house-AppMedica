@@ -27,13 +27,17 @@
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:layout_marginTop="175dp"
-        app:srcCompat="@drawable/grafica_color_random" />
+        app:srcCompat="@drawable/grafica_color_random"
+        android:layout_gravity="center_horizontal"/>
 
     <Button
         android:id="@+id/btnBasculaText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+
         android:layout_marginLeft="40dp"
+        android:layout_marginRight="130dp"
         android:layout_marginTop="430dp"
         android:text="@string/btnBascula"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
@@ -44,10 +48,13 @@
         android:id="@+id/btnBascula"
         android:layout_width="300dp"
         android:layout_height="140dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="400dp"
+        android:baselineAlignBottom="false"
         android:cropToPadding="false"
         android:drawablePadding="8dp"
+        android:foregroundGravity="bottom"
         android:scaleType="fitEnd"
         app:srcCompat="@drawable/escala" />
 
