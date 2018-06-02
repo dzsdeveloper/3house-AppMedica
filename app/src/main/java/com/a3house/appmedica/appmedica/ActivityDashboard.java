@@ -21,6 +21,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Timer;
 import java.util.TimerTask;
 import android.os.Handler;
@@ -78,8 +80,9 @@ public class ActivityDashboard extends AppCompatActivity
         btnIMCActual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String cad = gestionPeso.clasificacionIMC(Double.valueOf(btnIMCActual.getText().toString()));
-                Snackbar.make(view, "Tu IMC (índice de masa corporal) corresponde en la escala a "+cad, Snackbar.LENGTH_LONG)
+                double imcActual = Double.valueOf(btnIMCActual.getText().toString());
+                String miImc = gestionPeso.clasificacionIMC(imcActual);
+                Snackbar.make(view, "Tu IMC (índice de masa corporal) corresponde en la escala a "+miImc, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                         }
         });
@@ -204,8 +207,11 @@ public class ActivityDashboard extends AppCompatActivity
             String resultado = String.valueOf(msg.obj);
             GestionPeso gp = new GestionPeso();
             double imc = gp.calcularIMC(ultimoUsuario, Double.valueOf(resultado));
+            DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
+            simbolos.setDecimalSeparator('.');
+            DecimalFormat df = new DecimalFormat("#.#", simbolos);
             btnPesoActual.setText(resultado);
-            btnIMCActual.setText(String.format("%.1f", imc));
+            btnIMCActual.setText(df.format(imc));
         }
     };
 

@@ -19,6 +19,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -116,8 +118,11 @@ public class GestionPeso implements View.OnClickListener {
                   //Enviamos el nuevo Peso al FireBase
                   Peso nuevoPeso = new Peso(miCalendario,miVariacion,miImc,miNotas,miValor);
                   gf.enviarDatosPeso(nuevoPeso);
+                  DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
+                  simbolos.setDecimalSeparator('.');
+                  DecimalFormat df = new DecimalFormat("#.#", simbolos);
                   ActivityDashboard.btnPesoActual.setText(String.valueOf(miValor));
-                  ActivityDashboard.btnIMCActual.setText(String.format("%.1f", miImc));
+                  ActivityDashboard.btnIMCActual.setText(df.format(miImc));
 
 
                 dialog.dismiss();
